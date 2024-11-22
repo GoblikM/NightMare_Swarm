@@ -4,39 +4,51 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // constants for the animator parameters
+    private const string HORIZONTAL = "Horizontal";
+    private const string VERTICAL = "Vertical";
+    private const string SPEED = "Speed";
 
-    public float moveSpeed = 5f;
+    private Rigidbody2D rigidBody;
+    private Animator animator;
 
-    Rigidbody2D rigidBody;
+    private Vector2 moveDir;
 
-    public Vector2 moveDir;
 
-    private void Start()
+    [Header("Movement Configuration")]
+    [SerializeField]
+    private float walkSpeed = 5f;
+
+
+    private void Awake()
     {
+        // Get the components
         rigidBody = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
+
+
 
     private void Update()
     {
-        InputManagment();
+        // Get the input from the player
+        moveDir.x = Input.GetAxisRaw("Horizontal");
+        moveDir.y = Input.GetAxisRaw("Vertical");
+
+        // Set the animator parameters
+        animator.SetFloat(HORIZONTAL, moveDir.x);
+        animator.SetFloat(VERTICAL, moveDir.y);
+        animator.SetFloat(SPEED, moveDir.sqrMagnitude);
+
     }
 
+
+    // FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     private void FixedUpdate()
     {
-        Move();
+        // Move the player
+        rigidBody.MovePosition(rigidBody.position + moveDir.normalized * walkSpeed * Time.fixedDeltaTime);
     }
-
-    void InputManagment()
-    {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-
-        moveDir = new Vector2(moveX, moveY).normalized;
-    }
-
-    void Move()
-    {
-        rigidBody.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
-    }
-
 }
+
+
