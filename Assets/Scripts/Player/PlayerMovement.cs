@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // Move the player
         rigidBody.MovePosition(rigidBody.position + moveDir.normalized * walkSpeed * Time.fixedDeltaTime);
+        Debug.Log("Current Speed: " + (moveDir.normalized * walkSpeed).magnitude);
+
     }
 
 
