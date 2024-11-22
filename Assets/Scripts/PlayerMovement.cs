@@ -49,6 +49,13 @@ public class PlayerMovement : MonoBehaviour
         // Move the player
         rigidBody.MovePosition(rigidBody.position + moveDir.normalized * walkSpeed * Time.fixedDeltaTime);
     }
+
+
+    // Get the direction the player is moving
+    public Vector2 GetPlayerMoveDir()
+    {
+        return moveDir;
+    }
 }
 
 
