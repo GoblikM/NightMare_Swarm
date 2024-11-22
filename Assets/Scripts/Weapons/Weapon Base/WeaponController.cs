@@ -12,11 +12,11 @@ public class WeaponController : MonoBehaviour
     float currentCooldown;
     public int pierceCount; // How many enemies the weapon can pierce through before being destroyed
 
-    protected PlayerMovement playerMovement;
+    protected Player playerMovement;
 
     protected virtual void Start()
     {
-        playerMovement = FindObjectOfType<PlayerMovement>();
+        playerMovement = FindObjectOfType<Player>();
         currentCooldown = cooldownDuration;
     }
 

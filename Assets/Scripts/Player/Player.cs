@@ -1,73 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    // constants for the animator parameters
-    private const string HORIZONTAL = "Horizontal";
-    private const string VERTICAL = "Vertical";
-    private const string SPEED = "Speed";
+    //public static PlayerMovement Instance { get; private set; }
 
     private Rigidbody2D rigidBody;
-    private Animator animator;
 
     private Vector2 moveDir;
     private Vector2 lastMoveDir;
-
-
 
     [Header("Movement Configuration")]
     [SerializeField]
     private float walkSpeed = 5f;
 
-
     private void Awake()
     {
         // Get the components
         rigidBody = GetComponent<Rigidbody2D>();
-        animator = GetComponentInChildren<Animator>();
         lastMoveDir = new Vector2(1, 0f); // Default direction is right (1, 0)
     }
-
-
 
     private void Update()
     {
         // Get the input from the player
-        moveDir.x = Input.GetAxisRaw("Horizontal");
-        moveDir.y = Input.GetAxisRaw("Vertical");
-
-        // Set the animator parameters
-        animator.SetFloat(HORIZONTAL, moveDir.x);
-        animator.SetFloat(VERTICAL, moveDir.y);
-        animator.SetFloat(SPEED, moveDir.sqrMagnitude);
-
-        if(moveDir.x != 0)
-        {
-            lastMoveDir = new Vector2(moveDir.x, 0f);
-        }
-        if(moveDir.y != 0)
-        {
-            lastMoveDir = new Vector2(0f, moveDir.y);
-        }
-
-        // When the player is moving diagonally, set the last move direction to the last move direction
-        if (moveDir.x != 0 && moveDir.y != 0)
-        {
-            lastMoveDir = new Vector2(moveDir.x, moveDir.y);
-        }
-       
-       
+        HandleInputs();
+ 
+        SetPlayerLastMoveDir();
 
     }
-
-    public Vector2 GetLastMoveDirNormalized()
-    {
-        return lastMoveDir;
-    }
-
-
     // FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     private void FixedUpdate()
     {
@@ -77,11 +40,47 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    // funtion to handle inputs, gets the move direction
+    private void HandleInputs()
+    {
+        moveDir.x = Input.GetAxisRaw("Horizontal");
+        moveDir.y = Input.GetAxisRaw("Vertical");
+    }
+
+    private void SetPlayerLastMoveDir()
+    {
+        if (moveDir.x != 0)
+        {
+            lastMoveDir = new Vector2(moveDir.x, 0f);
+        }
+        if (moveDir.y != 0)
+        {
+            lastMoveDir = new Vector2(0f, moveDir.y);
+        }
+
+        // When the player is moving diagonally, set the last move direction to the last move direction
+        if (moveDir.x != 0 && moveDir.y != 0)
+        {
+            lastMoveDir = new Vector2(moveDir.x, moveDir.y);
+        }
+    }
+
+    public Vector2 GetPlayerLastMoveDirNormalized()
+    {
+        return lastMoveDir.normalized;
+    }
+
+    // get move direction raw
+    public Vector2 GetPlayerMoveDirRaw()
+    {
+        return moveDir;
+    }
+
 
     // Get the direction the player is moving
     public Vector2 GetPlayerMoveDirNormalized()
     {
-        return moveDir;
+        return moveDir.normalized;
     }
 }
 
