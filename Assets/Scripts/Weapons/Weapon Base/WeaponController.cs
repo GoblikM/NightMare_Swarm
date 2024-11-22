@@ -9,7 +9,7 @@ public class WeaponController : MonoBehaviour
     public float damage;
     public float speed;
     public float cooldownDuration;
-    public float currentCooldown;
+    float currentCooldown;
     public int pierceCount; // How many enemies the weapon can pierce through before being destroyed
 
     protected PlayerMovement playerMovement;
