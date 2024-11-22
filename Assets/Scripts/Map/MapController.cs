@@ -51,7 +51,7 @@ public class MapController : MonoBehaviour
         }
 
         // Get player direction
-        Vector2 playerMoveDir = playerMovement.GetPlayerMoveDir();
+        Vector2 playerMoveDir = playerMovement.GetPlayerMoveDirNormalized();
 
         foreach (var dir in directions)
         {

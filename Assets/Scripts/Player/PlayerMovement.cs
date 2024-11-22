@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
 
     private Vector2 moveDir;
+    private Vector2 lastMoveDir;
+
 
 
     [Header("Movement Configuration")]
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         // Get the components
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        lastMoveDir = new Vector2(1, 0f); // Default direction is right (1, 0)
     }
 
 
@@ -40,6 +43,28 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat(VERTICAL, moveDir.y);
         animator.SetFloat(SPEED, moveDir.sqrMagnitude);
 
+        if(moveDir.x != 0)
+        {
+            lastMoveDir = new Vector2(moveDir.x, 0f);
+        }
+        if(moveDir.y != 0)
+        {
+            lastMoveDir = new Vector2(0f, moveDir.y);
+        }
+
+        // When the player is moving diagonally, set the last move direction to the last move direction
+        if (moveDir.x != 0 && moveDir.y != 0)
+        {
+            lastMoveDir = new Vector2(moveDir.x, moveDir.y);
+        }
+       
+       
+
+    }
+
+    public Vector2 GetLastMoveDirNormalized()
+    {
+        return lastMoveDir;
     }
 
 
@@ -54,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     // Get the direction the player is moving
-    public Vector2 GetPlayerMoveDir()
+    public Vector2 GetPlayerMoveDirNormalized()
     {
         return moveDir;
     }
