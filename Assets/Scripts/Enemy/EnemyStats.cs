@@ -30,8 +30,17 @@ public class EnemyStats : MonoBehaviour
 
     public void Die()
     {
-        // Destroy the enemy
+        // Destroy the enemy object
         Destroy(gameObject);
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
+            player.TakeDamage(currentDamage);
+        }
     }
 
 }

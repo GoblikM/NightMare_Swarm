@@ -7,14 +7,19 @@ public class Player : MonoBehaviour
 {
     //public static PlayerMovement Instance { get; private set; }
 
-    private Rigidbody2D rigidBody;
 
+    // References
+    private Rigidbody2D rigidBody;
+    public CharacterSO characterData;
+
+
+    // Movement variables
     private Vector2 moveDir;
     private Vector2 lastMoveDir;
 
-    [Header("Movement Configuration")]
-    [SerializeField]
-    private float walkSpeed = 5f;
+    //[Header("Movement Configuration")]
+    //[SerializeField]
+    //private float walkSpeed = 5f;
 
     private void Awake()
     {
@@ -35,8 +40,8 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         // Move the player
-        rigidBody.MovePosition(rigidBody.position + moveDir.normalized * walkSpeed * Time.fixedDeltaTime);
-        Debug.Log("Current Speed: " + (moveDir.normalized * walkSpeed).magnitude);
+        rigidBody.MovePosition(rigidBody.position + moveDir.normalized * characterData.MoveSpeed * Time.fixedDeltaTime);
+        Debug.Log("Current Speed: " + (moveDir.normalized * characterData.MoveSpeed).magnitude);
 
     }
 

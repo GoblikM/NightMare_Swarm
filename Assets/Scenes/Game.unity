@@ -397,6 +397,8 @@ GameObject:
   - component: {fileID: 759449756}
   - component: {fileID: 759449755}
   - component: {fileID: 759449754}
+  - component: {fileID: 759449759}
+  - component: {fileID: 759449760}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -416,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e027f16e7fd0c5d41aa35a7d94d6fcdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  characterData: {fileID: 11400000, guid: 3e48daab89ed6fe44a3cd1915089cabc, type: 2}
 --- !u!61 &759449755
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -507,6 +509,45 @@ Transform:
   - {fileID: 1731807399}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &759449759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759449753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91258b95733002f41870a620722ba980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterData: {fileID: 11400000, guid: 3e48daab89ed6fe44a3cd1915089cabc, type: 2}
+  experience: 0
+  level: 1
+  experienceCap: 0
+  levelRanges:
+  - startLevel: 0
+    endLevel: 1
+    experienceCapIncrease: 0
+  - startLevel: 1
+    endLevel: 3
+    experienceCapIncrease: 100
+  - startLevel: 4
+    endLevel: 5
+    experienceCapIncrease: 200
+  invincibilityDuration: 0.5
+--- !u!114 &759449760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759449753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39471839d49d577458a81c9120d1630a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1272934458
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +967,10 @@ PrefabInstance:
     - target: {fileID: 2552277075729640841, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5218741068986569835, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
+      propertyPath: drops.Array.data[0].dropRate
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8972377595951973060, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_Name

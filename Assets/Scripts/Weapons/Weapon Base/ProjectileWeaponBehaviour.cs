@@ -89,6 +89,16 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
             enemy.TakeDamage(currentDamage);
             ReducePierce();
         }
+        // Check if the projectile hits a breakable object
+        else if (collider.CompareTag("Breakable"))
+        {
+            if(collider.gameObject.TryGetComponent(out BreakableProps breakable))
+            {
+                // Damage the breakable object
+                breakable.TakeDamage(currentDamage);
+                ReducePierce();
+            }
+        }
     }
 
     void ReducePierce()

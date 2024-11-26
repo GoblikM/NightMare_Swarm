@@ -13,15 +13,23 @@ public class GarlicBehaviour : MeleeWeaponBehaviour
         marketEnemies = new List<GameObject>();
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.CompareTag("Enemy") && !marketEnemies.Contains(collision.gameObject))
+        if(collider.CompareTag("Enemy") && !marketEnemies.Contains(collider.gameObject))
         {
-            collision.GetComponent<EnemyStats>().TakeDamage(currentDamage);
+            collider.GetComponent<EnemyStats>().TakeDamage(currentDamage);
              // Add the enemy to the list of enemies that have been hit,
             // so that they don't take damage again from the same instance of the garlic
-            marketEnemies.Add(collision.gameObject);
+            marketEnemies.Add(collider.gameObject);
 
+        }
+        else if (collider.CompareTag("Breakable"))
+        {
+            if (collider.gameObject.TryGetComponent(out BreakableProps breakable) && !marketEnemies.Contains(collider.gameObject))
+            {
+                breakable.TakeDamage(currentDamage);
+                marketEnemies.Add(collider.gameObject);
+            }
         }
     }
 

@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 1074411916360487301}
   - component: {fileID: 64845010632388228}
   - component: {fileID: 3724814667988174743}
+  - component: {fileID: -436245513580501605}
+  - component: {fileID: 320267885270909853}
   m_Layer: 0
   m_Name: Terrain Sprite Sheet_22
-  m_TagString: Untagged
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,3 +132,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-436245513580501605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4334339252354288434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b076d9c4559d2f44c96b6ac2bb06ac1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+--- !u!114 &320267885270909853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4334339252354288434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34537a16322656245b02ba08a70a1ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - name: Heal Potion
+    itemPrefab: {fileID: 3459525743246584972, guid: 82c49b191ce50844c85d979f84f15bbc, type: 3}
+    dropRate: 100
