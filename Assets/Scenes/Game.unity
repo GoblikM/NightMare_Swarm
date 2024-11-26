@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 587589658}
   - component: {fileID: 587589660}
   - component: {fileID: 587589659}
+  - component: {fileID: 587589661}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Untagged
@@ -371,6 +372,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &587589661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587589657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3213238311c5742a75f023a1b97302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 759449754}
 --- !u!1 &759449753
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +413,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 759449753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a88848444ace374db5ad07af631dae6, type: 3}
+  m_Script: {fileID: 11500000, guid: e027f16e7fd0c5d41aa35a7d94d6fcdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 5
@@ -762,12 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea09b28ef2bebc4ab42c54cd3e7e5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 3458183996859970548, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
-  damage: 0
-  speed: 0
-  cooldownDuration: 3
-  currentCooldown: 3
-  pierceCount: 0
+  weaponData: {fileID: 11400000, guid: 60f1b85aeef37b94c83323a0bbe3a40e, type: 2}
 --- !u!1 &2010433475
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,12 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fcb3d3eda971064cbfdc368c5396424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 7256014068030382074, guid: b6645279cc1e5cc47b0a6d9c93b57a3f, type: 3}
-  damage: 0
-  speed: 10
-  cooldownDuration: 2
-  currentCooldown: 0
-  pierceCount: 0
+  weaponData: {fileID: 11400000, guid: e4474da3787f0094385d35bedab1547d, type: 2}
 --- !u!1001 &461590974902010468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -875,7 +879,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d6706b970d92eb4a91474b32b4d573d, type: 3}
---- !u!1001 &4053484867858836754
+--- !u!1001 &5847618331091520578
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -883,55 +887,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3458183996859970548, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
-      propertyPath: m_Name
-      value: GarlicWeapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 7079974866038977478, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
+    - target: {fileID: 2552277075729640841, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.61
       objectReference: {fileID: 0}
-    - target: {fileID: 7079974866038977478, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
+    - target: {fileID: 2552277075729640841, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.08
       objectReference: {fileID: 0}
-    - target: {fileID: 7079974866038977478, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
+    - target: {fileID: 2552277075729640841, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7079974866038977478, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
+    - target: {fileID: 2552277075729640841, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7079974866038977478, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
+    - target: {fileID: 2552277075729640841, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7079974866038977478, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
+    - target: {fileID: 2552277075729640841, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7079974866038977478, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
+    - target: {fileID: 2552277075729640841, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7079974866038977478, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
+    - target: {fileID: 2552277075729640841, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7079974866038977478, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
+    - target: {fileID: 2552277075729640841, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7079974866038977478, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
+    - target: {fileID: 2552277075729640841, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972377595951973060, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
+      propertyPath: m_Name
+      value: Bat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -941,4 +945,4 @@ SceneRoots:
   - {fileID: 461590974902010468}
   - {fileID: 1272934460}
   - {fileID: 1487394903}
-  - {fileID: 4053484867858836754}
+  - {fileID: 5847618331091520578}

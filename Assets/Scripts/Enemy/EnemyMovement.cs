@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public EnemySO enemyData;
     Transform Player;
-    public float moveSpeed = 5f;
 
     private void Start()
     {
@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         // Move the enemy towards the player
-        transform.position = Vector2.MoveTowards(transform.position, Player.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, Player.position, enemyData.MoveSpeed * Time.deltaTime);
     }
 }
 

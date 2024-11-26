@@ -5,19 +5,15 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     [Header("Weapon Stats")]
-    public GameObject weaponPrefab;
-    public float damage;
-    public float speed;
-    public float cooldownDuration;
+    public WeaponSO weaponData;
     float currentCooldown;
-    public int pierceCount; // How many enemies the weapon can pierce through before being destroyed
 
     protected Player playerMovement;
 
     protected virtual void Start()
     {
         playerMovement = FindObjectOfType<Player>();
-        currentCooldown = cooldownDuration;
+        currentCooldown = weaponData.CooldownDuration;
     }
 
     protected virtual void Update()
@@ -31,7 +27,7 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Attack()
     {
-        currentCooldown = cooldownDuration;
+        currentCooldown = weaponData.CooldownDuration;
     }
 
 }
