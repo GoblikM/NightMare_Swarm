@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         // Move the player
-        rigidBody.MovePosition(rigidBody.position + moveDir.normalized * player.currentMoveSpeed * Time.fixedDeltaTime);
+        MovePlayer();
         //Debug.Log("Current Speed: " + (moveDir.normalized * characterData.MoveSpeed).magnitude);
 
     }
@@ -51,6 +51,12 @@ public class Player : MonoBehaviour
     {
         moveDir.x = Input.GetAxisRaw("Horizontal");
         moveDir.y = Input.GetAxisRaw("Vertical");
+    }
+
+    private void MovePlayer()
+    {
+        // Move the player
+        rigidBody.MovePosition(rigidBody.position + moveDir.normalized * player.currentMoveSpeed * Time.fixedDeltaTime);
     }
 
     private void SetPlayerLastMoveDir()
@@ -71,6 +77,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Get the last direction the player moved
     public Vector2 GetPlayerLastMoveDirNormalized()
     {
         return lastMoveDir.normalized;
@@ -80,6 +87,12 @@ public class Player : MonoBehaviour
     public Vector2 GetPlayerMoveDirRaw()
     {
         return moveDir;
+    }
+
+    // get last move direction raw
+    public Vector2 GetPlayerLastMoveDirRaw()
+    {
+        return lastMoveDir;
     }
 
 

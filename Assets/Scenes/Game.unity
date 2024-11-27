@@ -361,7 +361,7 @@ SpriteRenderer:
   m_SortingLayerID: -1878055751
   m_SortingLayer: 3
   m_SortingOrder: 20
-  m_Sprite: {fileID: -307184668, guid: ce35650149918164f94645f734b603c5, type: 3}
+  m_Sprite: {fileID: -1545575512, guid: ce35650149918164f94645f734b603c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -518,13 +518,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91258b95733002f41870a620722ba980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData: {fileID: 0}
   currentHealth: 0
   currentRecovery: 0
   currentMoveSpeed: 0
   currentMight: 0
   currentProjectileSpeed: 0
   currentPickUpRange: 0
+  weapons: []
   experience: 0
   level: 1
   experienceCap: 0

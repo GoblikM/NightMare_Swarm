@@ -4,25 +4,39 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    private const string HORIZONTAL = "Horizontal";
-    private const string VERTICAL = "Vertical";
-    private const string SPEED = "Speed";
+    private const string IS_MOVING = "isMoving";
+  
 
     private Animator animator;
     [SerializeField]
     private Player player;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-    
-        animator.SetFloat(HORIZONTAL, player.GetPlayerMoveDirRaw().x);
-        animator.SetFloat(VERTICAL, player.GetPlayerMoveDirRaw().y);
-        animator.SetFloat(SPEED, player.GetPlayerMoveDirRaw().sqrMagnitude);
+        animator.SetBool(IS_MOVING, player.GetPlayerMoveDirRaw() != Vector2.zero);
+        CheckWalkDirection();
+
     }
+    
+    private void CheckWalkDirection()
+    {
+        if(player.GetPlayerLastMoveDirRaw().x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (player.GetPlayerLastMoveDirRaw().x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+    }
+
+
 
 }
