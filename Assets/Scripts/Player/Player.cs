@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     // References
     private Rigidbody2D rigidBody;
-    public CharacterSO characterData;
+    private PlayerStats player;
 
 
     // Movement variables
@@ -21,9 +21,10 @@ public class Player : MonoBehaviour
     //[SerializeField]
     //private float walkSpeed = 5f;
 
-    private void Awake()
+    private void Start()
     {
         // Get the components
+        player = GetComponent<PlayerStats>();
         rigidBody = GetComponent<Rigidbody2D>();
         lastMoveDir = new Vector2(1, 0f); // Default direction is right (1, 0)
     }
@@ -40,8 +41,8 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         // Move the player
-        rigidBody.MovePosition(rigidBody.position + moveDir.normalized * characterData.MoveSpeed * Time.fixedDeltaTime);
-        Debug.Log("Current Speed: " + (moveDir.normalized * characterData.MoveSpeed).magnitude);
+        rigidBody.MovePosition(rigidBody.position + moveDir.normalized * player.currentMoveSpeed * Time.fixedDeltaTime);
+        //Debug.Log("Current Speed: " + (moveDir.normalized * characterData.MoveSpeed).magnitude);
 
     }
 

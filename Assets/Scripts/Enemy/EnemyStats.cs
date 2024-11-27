@@ -7,9 +7,12 @@ public class EnemyStats : MonoBehaviour
     public EnemySO enemyData;
 
     // Current stats of the enemy, these will be changed during the game
-    private float currentHealth;
-    private float currentSpeed;
-    private float currentDamage;
+    [HideInInspector]
+    public float currentHealth;
+    [HideInInspector]
+    public float currentSpeed;
+    [HideInInspector]
+    public float currentDamage;
 
     private void Awake()
     {
