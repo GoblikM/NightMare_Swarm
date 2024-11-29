@@ -53,6 +53,10 @@ public class EnemyStats : MonoBehaviour
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// Deal damage to the player when the enemy collides with the player
+    /// </summary>
+    /// <param name="collision"></param>
     public void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
@@ -62,6 +66,9 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// When the enemy is destroyed, call the OnEnemyKilled method in the EnemySpawner script
+    /// </summary>
     private void OnDestroy()
     {
         EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
@@ -70,9 +77,9 @@ public class EnemyStats : MonoBehaviour
     }
 
 
-    /**
-     * Return the enemy to the player's position when the enemy is too far from the player
-     */
+    /// <summary>
+    /// Return the enemy to a random spawn position when the player is too far away
+    /// </summary>
     void ReturnEnemy()
     {
         EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
