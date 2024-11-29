@@ -23,4 +23,17 @@ public class WeaponSO : ScriptableObject
     private int pierceCount; // How many enemies the weapon can pierce through before being destroyed
     public int PierceCount { get => pierceCount; private set => pierceCount = value; }
 
+    [SerializeField]
+    private int level;
+    public int Level { get => level; private set => level = value; }
+
+    [SerializeField]
+    private GameObject nextLevelPrefab;
+    public GameObject NextLevelPrefab { get => nextLevelPrefab; private set => nextLevelPrefab = value; }
+
+    [SerializeField]
+    private Sprite icon;
+    public Sprite Icon { get => icon; private set => icon = value; }
+
+
 }

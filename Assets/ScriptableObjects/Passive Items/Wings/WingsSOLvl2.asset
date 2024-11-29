@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0976fd64a7c584442b170e0f6d57d0fa, type: 3}
-  m_Name: RedBatEnemy
+  m_Script: {fileID: 11500000, guid: 181b1a3bea533cf4b967ef71a212b95c, type: 3}
+  m_Name: WingsSOLvl2
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  maxHealth: 10
-  damage: 30
+  multiplier: 75
+  level: 2
+  nextLevelPrefab: {fileID: 0}
+  icon: {fileID: 331760785, guid: fc3994312cb13e144998df6236d3acac, type: 3}

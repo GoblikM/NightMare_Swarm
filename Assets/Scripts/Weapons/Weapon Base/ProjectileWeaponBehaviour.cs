@@ -32,6 +32,15 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         Destroy(gameObject, destroyAfterSeconds);
     }
 
+
+    /// <summary>
+    /// Get the current damage of the weapon after applying the player's might
+    /// </summary>
+    public float GetCurrentDamage()
+    {
+        return currentDamage *= FindObjectOfType<PlayerStats>().currentMight;
+    }
+
     public void DirectionChecker(Vector3 direction)
     {
         this.direction = direction;
@@ -86,7 +95,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         if (collider.CompareTag("Enemy"))
         {
             EnemyStats enemy = collider.GetComponent<EnemyStats>();
-            enemy.TakeDamage(currentDamage);
+            enemy.TakeDamage(GetCurrentDamage());
             ReducePierce();
         }
         // Check if the projectile hits a breakable object
@@ -95,7 +104,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
             if(collider.gameObject.TryGetComponent(out BreakableProps breakable))
             {
                 // Damage the breakable object
-                breakable.TakeDamage(currentDamage);
+                breakable.TakeDamage(GetCurrentDamage());
                 ReducePierce();
             }
         }

@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour
     private CharacterSO characterData;
 
     // current stats
-    //[HideInInspector]
+    [HideInInspector]
     public float currentHealth;
     [HideInInspector]
     public float currentRecovery;
@@ -20,17 +20,12 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector]
     public float currentPickUpRange;
 
-    // Spawned weapon
-    public List<GameObject> weapons;
 
     // Exp and level of the player
     [Header("Experience/Level")]
     public int experience = 0;
     public int level = 1;
     public int experienceCap;
-
-    // List of level ranges
-    public List<LevelRange> levelRanges;
 
     // Class for a level range and the corresponding experience cap increase for that range
     [System.Serializable]
@@ -41,23 +36,28 @@ public class PlayerStats : MonoBehaviour
         public int experienceCapIncrease;
     }
 
+    // List of level ranges
+    public List<LevelRange> levelRanges;
+
     //I-Frames
     [Header("I-Frames")]
     public float invincibilityDuration;
     private float invincibilityTimer;
     private bool isInvincible;
 
-    private void Start()
-    {
-        // Set the experience cap to the first level range
-        experienceCap = levelRanges[0].experienceCapIncrease;
+    InventoryManager inventory;
+    public int weaponSlotIndex;
+    public int passiveItemSlotIndex;
 
-    }
+    public GameObject secondWeaponTest;
+    public GameObject firstPassiveItemTest, secondPassiveItemTest;
 
     private void Awake()
     {
         characterData = CharacterSelector.GetCharacterData();
         CharacterSelector.instance.DestroySingleton();
+        inventory = GetComponent<InventoryManager>();
+
         // Set the current stats to the default values
         currentHealth = characterData.MaxHealth;
         currentRecovery = characterData.Recovery;
@@ -68,7 +68,18 @@ public class PlayerStats : MonoBehaviour
 
         // Spawn the default weapon
         SpawnWeapon(characterData.DefaultWeapon);
+        SpawnWeapon(secondWeaponTest);
+        SpawnPassiveItem(firstPassiveItemTest);
+        SpawnPassiveItem(secondPassiveItemTest);
     }
+
+    private void Start()
+    {
+        // Set the experience cap to the first level range
+        experienceCap = levelRanges[0].experienceCapIncrease;
+
+    }
+
 
     private void Update()
     {
@@ -160,8 +171,32 @@ public class PlayerStats : MonoBehaviour
 
     public void SpawnWeapon(GameObject weapon)
     {
+        if(weaponSlotIndex >= inventory.weaponSlots.Count - 1)
+        {
+            Debug.Log("Cannot add more weapons");
+            return;
+        }
+
         GameObject spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
         spawnedWeapon.transform.SetParent(transform);
-        weapons.Add(spawnedWeapon);
+        // Add the weapon to the inventory
+        inventory.AddWeapon(weaponSlotIndex, spawnedWeapon.GetComponent<WeaponController>());
+        // increase the weapon slot index
+        weaponSlotIndex++;
+    }
+
+
+    public void SpawnPassiveItem(GameObject passiveItem)
+    {
+        if (passiveItemSlotIndex >= inventory.passiveItemSlots.Count - 1)
+        {
+            Debug.Log("Cannot add more passive Items!");
+            return;
+        }
+
+        GameObject spawnedPassiveItem = Instantiate(passiveItem, transform.position, Quaternion.identity);
+        spawnedPassiveItem.transform.SetParent(transform);
+        inventory.AddPassiveItem(passiveItemSlotIndex, spawnedPassiveItem.GetComponent<PassiveItem>());
+        passiveItemSlotIndex++;
     }
 }

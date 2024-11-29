@@ -27,17 +27,22 @@ public class MeleeWeaponBehaviour : MonoBehaviour
         Destroy(gameObject, destroyAfterSeconds);
     }
 
+    public float GetCurrentDamage()
+    {
+        return currentDamage *= FindObjectOfType<PlayerStats>().currentMight;
+    }
+
     protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Enemy"))
         {
-            collider.GetComponent<EnemyStats>().TakeDamage(currentDamage);
+            collider.GetComponent<EnemyStats>().TakeDamage(GetCurrentDamage());
         }
         else if (collider.CompareTag("Breakable"))
         {
             if(collider.gameObject.TryGetComponent(out BreakableProps breakable))
             {
-                breakable.TakeDamage(currentDamage);
+                breakable.TakeDamage(GetCurrentDamage());
                 
             }
         }

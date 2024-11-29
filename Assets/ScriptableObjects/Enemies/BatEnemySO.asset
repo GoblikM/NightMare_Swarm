@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b868844fac3040e4fb38eb7533b4da21, type: 3}
-  m_Name: GarlicWeapon
+  m_Script: {fileID: 11500000, guid: 0976fd64a7c584442b170e0f6d57d0fa, type: 3}
+  m_Name: BatEnemySO
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 3458183996859970548, guid: 6e7d741d598a57b46a3261d1806a34cd, type: 3}
-  damage: 5
-  speed: 0
-  cooldownDuration: 3
-  pierceCount: 0
+  moveSpeed: 2
+  maxHealth: 10
+  damage: 30

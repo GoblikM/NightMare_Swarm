@@ -17,6 +17,11 @@ public class DropRateManager : MonoBehaviour
     // OnDestroy is called when the object with this script is destroyed
     private void OnDestroy()
     {
+        if(!gameObject.scene.isLoaded)
+        {
+            return;
+        }
+
         float randomNumber = Random.Range(0f, 100f);
         // List with possible drops
         List<Drops> possibleDrops = new List<Drops>();

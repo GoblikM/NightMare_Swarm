@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0976fd64a7c584442b170e0f6d57d0fa, type: 3}
-  m_Name: BatEnemy
+  m_Script: {fileID: 11500000, guid: 181b1a3bea533cf4b967ef71a212b95c, type: 3}
+  m_Name: SpinachSOLvl2
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  maxHealth: 10
-  damage: 30
+  multiplier: 150
+  level: 2
+  nextLevelPrefab: {fileID: 0}
+  icon: {fileID: -880915634, guid: 1bda1b34ab4ff354887c133bf90bc9bc, type: 3}
