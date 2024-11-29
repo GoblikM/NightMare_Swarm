@@ -7,8 +7,7 @@ public class CharacterSelector : MonoBehaviour
     public static CharacterSelector instance;
     public CharacterSO characterData;
 
-
-    private void Awake()
+    void Awake()
     {
         if (instance == null)
         {

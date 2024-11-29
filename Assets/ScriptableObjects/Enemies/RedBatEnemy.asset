@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0976fd64a7c584442b170e0f6d57d0fa, type: 3}
-  m_Name: BatEnemy
+  m_Name: RedBatEnemy
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 3
   maxHealth: 10
   damage: 30
