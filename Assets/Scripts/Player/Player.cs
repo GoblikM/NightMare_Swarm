@@ -49,14 +49,16 @@ public class Player : MonoBehaviour
     // funtion to handle inputs, gets the move direction
     private void HandleInputs()
     {
+        if (GameManager.instance.isGameOver) return;
         moveDir.x = Input.GetAxisRaw("Horizontal");
         moveDir.y = Input.GetAxisRaw("Vertical");
     }
 
     private void MovePlayer()
     {
+        if(GameManager.instance.isGameOver) return;
         // Move the player
-        rigidBody.MovePosition(rigidBody.position + moveDir.normalized * player.currentMoveSpeed * Time.fixedDeltaTime);
+        rigidBody.MovePosition(rigidBody.position + moveDir.normalized * player.CurrentMoveSpeed * Time.fixedDeltaTime);
     }
 
     private void SetPlayerLastMoveDir()

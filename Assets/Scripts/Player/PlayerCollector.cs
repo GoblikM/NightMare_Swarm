@@ -21,7 +21,7 @@ public class PlayerCollector : MonoBehaviour
     private void Update()
     {
         // Set the radius of the circle collider to the current pick up range of the player
-        circleCollider.radius = player.currentPickUpRange;
+        circleCollider.radius = player.CurrentPickUpRange;
     }
 
     /**

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     // Define the different states of the game
     public enum GameState
     {
@@ -19,10 +22,29 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     public GameObject pauseMenu;
+    public GameObject resultsScreen;
+
+    // Current Stat displays
+    public Text currentHealthText;
+    public Text currentRecoveryText;
+    public Text currentMoveSpeedText;
+    public Text currentMightText;
+    public Text currentProjectileSpeedText;
+    public Text currentPickUpRangeText;
+
+    public bool isGameOver = false;
 
     private void Awake()
     {
-        DisablePauseMenu();
+        // Singleton pattern to ensure only one instance of the GameManager exists
+        if (instance == null) {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DisableScreens();
     }
 
     private void Update()
@@ -40,6 +62,13 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GameOver:
                 // Update the game over screen
+                if (!isGameOver)
+                {
+                    isGameOver = true;
+                    Time.timeScale = 0f; // Stop the game
+                    Debug.Log("Game Over");
+                    DisplayResults();
+                }
                 break;
             default:
                 Debug.LogWarning("Invalid game state");
@@ -106,9 +135,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void DisablePauseMenu()
+    void DisableScreens()
     {
         pauseMenu.SetActive(false);
+        resultsScreen.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        ChangeState(GameState.GameOver);
+    }
+
+    void DisplayResults()
+    {
+        resultsScreen.SetActive(true);
     }
 
 

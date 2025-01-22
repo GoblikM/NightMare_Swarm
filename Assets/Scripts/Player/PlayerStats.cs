@@ -7,19 +7,127 @@ public class PlayerStats : MonoBehaviour
     private CharacterSO characterData;
 
     // current stats
-    [HideInInspector]
-    public float currentHealth;
-    [HideInInspector]
-    public float currentRecovery;
-    [HideInInspector]
-    public float currentMoveSpeed;
-    [HideInInspector]
-    public float currentMight;
-    [HideInInspector]
-    public float currentProjectileSpeed;
-    [HideInInspector]
-    public float currentPickUpRange;
+    float currentHealth;
+    float currentRecovery;
+    float currentMoveSpeed;
+    float currentMight;
+    float currentProjectileSpeed;
+    float currentPickUpRange;
 
+    #region Current Stats Properties
+    public float CurrentHealth
+    {
+        get { return currentHealth; }
+        set
+        {
+            // check if the value has changed
+            if (currentHealth != value)
+            {
+                currentHealth = value;
+                if(GameManager.instance != null) {
+                    GameManager.instance.currentHealthText.text = "Health: " + currentHealth.ToString();
+                }
+                // Add any additional logic here that needs to be executed whe the value changes
+
+            }
+        }
+    }
+    public float CurrentRecovery
+    {
+        get { return currentRecovery; }
+        set
+        {
+            // check if the value has changed
+            if (currentRecovery != value)
+            {
+                currentRecovery = value;
+                if(GameManager.instance != null)
+                {
+                    GameManager.instance.currentRecoveryText.text = "Recovery: " + currentRecovery.ToString();
+                }
+                // Add any additional logic here that needs to be executed whe the value changes
+
+            }
+        }
+    }
+
+    public float CurrentMoveSpeed
+    {
+        get { return currentMoveSpeed; }
+        set
+        {
+            // check if the value has changed
+            if (currentMoveSpeed != value)
+            {
+                currentMoveSpeed = value;
+                //Debug.Log("value changed");
+                if(GameManager.instance != null)
+                {
+                    GameManager.instance.currentMoveSpeedText.text = "Move Speed: " + currentMoveSpeed.ToString();
+                }
+                // Add any additional logic here that needs to be executed whe the value changes
+
+            }
+        }
+    }
+    public float CurrentMight
+    {
+        get { return currentMight; }
+        set
+        {
+            // check if the value has changed
+            if (currentMight != value)
+            {
+                currentMight = value;
+                if(GameManager.instance != null)
+                {
+                    GameManager.instance.currentMightText.text = "Might: " + currentMight.ToString();
+                }
+                // Add any additional logic here that needs to be executed whe the value changes
+
+            }
+        }
+    }
+
+    public float CurrentProjectileSpeed
+    {
+        get { return currentProjectileSpeed; }
+        set
+        {
+            // check if the value has changed
+            if (currentProjectileSpeed != value)
+            {
+                currentProjectileSpeed = value;
+                if(GameManager.instance != null)
+                {
+                    GameManager.instance.currentProjectileSpeedText.text = "Projectile Speed: " + currentProjectileSpeed.ToString();
+                }
+                // Add any additional logic here that needs to be executed whe the value changes
+
+            }
+        }
+    }
+
+
+    public float CurrentPickUpRange
+    {
+        get { return currentPickUpRange; }
+        set
+        {
+            // check if the value has changed
+            if (currentPickUpRange != value)
+            {
+                currentPickUpRange = value;
+                if(GameManager.instance != null)
+                {
+                    GameManager.instance.currentPickUpRangeText.text = "Pick Up Range: " + currentPickUpRange.ToString();
+                }
+                // Add any additional logic here that needs to be executed whe the value changes
+
+            }
+        }
+    }
+    #endregion
 
     // Exp and level of the player
     [Header("Experience/Level")]
@@ -59,12 +167,12 @@ public class PlayerStats : MonoBehaviour
         inventory = GetComponent<InventoryManager>();
 
         // Set the current stats to the default values
-        currentHealth = characterData.MaxHealth;
-        currentRecovery = characterData.Recovery;
-        currentMoveSpeed = characterData.MoveSpeed;
-        currentMight = characterData.Might;
-        currentProjectileSpeed = characterData.ProjectileSpeed;
-        currentPickUpRange = characterData.PickUpRange;
+        CurrentHealth = characterData.MaxHealth;
+        CurrentRecovery = characterData.Recovery;
+        CurrentMoveSpeed = characterData.MoveSpeed;
+        CurrentMight = characterData.Might;
+        CurrentProjectileSpeed = characterData.ProjectileSpeed;
+        CurrentPickUpRange = characterData.PickUpRange;
 
         // Spawn the default weapon
         SpawnWeapon(characterData.DefaultWeapon);
@@ -77,6 +185,15 @@ public class PlayerStats : MonoBehaviour
     {
         // Set the experience cap to the first level range
         experienceCap = levelRanges[0].experienceCapIncrease;
+
+        // Set the current stats display in the UI
+        GameManager.instance.currentHealthText.text = "Health: " + CurrentHealth.ToString();
+        GameManager.instance.currentRecoveryText.text = "Recovery: " + CurrentRecovery.ToString();
+        GameManager.instance.currentMoveSpeedText.text = "Move Speed: " + CurrentMoveSpeed.ToString();
+        GameManager.instance.currentMightText.text = "Might: " + CurrentMight.ToString();
+        GameManager.instance.currentProjectileSpeedText.text = "Projectile Speed: " + CurrentProjectileSpeed.ToString();
+        GameManager.instance.currentPickUpRangeText.text = "Pick Up Range: " + CurrentPickUpRange.ToString();
+
 
     }
 
@@ -129,12 +246,12 @@ public class PlayerStats : MonoBehaviour
     {
         if(!isInvincible)
         {
-            currentHealth -= damage;
+            CurrentHealth -= damage;
 
             invincibilityTimer = invincibilityDuration;
             isInvincible = true;
             Debug.Log("Player took damage");
-            if (currentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
                 Die();
             }     
@@ -143,21 +260,21 @@ public class PlayerStats : MonoBehaviour
 
     public void Heal(float amount)
     {
-        currentHealth += amount;
-        if(currentHealth > characterData.MaxHealth)
+        CurrentHealth += amount;
+        if(CurrentHealth > characterData.MaxHealth)
         {
-            currentHealth = characterData.MaxHealth;
+            CurrentHealth = characterData.MaxHealth;
         }
     }
 
     public void RecoverHealth()
     {
-        if(currentHealth < characterData.MaxHealth)
+        if(CurrentHealth < characterData.MaxHealth)
         {
-            currentHealth += currentRecovery * Time.deltaTime;
-            if(currentHealth > characterData.MaxHealth)
+            CurrentHealth += CurrentRecovery * Time.deltaTime;
+            if(CurrentHealth > characterData.MaxHealth)
             {
-                currentHealth = characterData.MaxHealth;
+                CurrentHealth = characterData.MaxHealth;
             }
         }
       
@@ -167,6 +284,10 @@ public class PlayerStats : MonoBehaviour
     {
         // Handle player death
         Debug.Log("Player died");
+        if(!GameManager.instance.isGameOver)
+        {
+            GameManager.instance.GameOver();
+        }
     }
 
     public void SpawnWeapon(GameObject weapon)
