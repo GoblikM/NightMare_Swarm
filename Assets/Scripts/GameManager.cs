@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,25 +30,25 @@ public class GameManager : MonoBehaviour
 
     // Current Stat displays
     [Header("Current Stats")]
-    public Text currentHealthText;
-    public Text currentRecoveryText;
-    public Text currentMoveSpeedText;
-    public Text currentMightText;
-    public Text currentProjectileSpeedText;
-    public Text currentPickUpRangeText;
+    public TMP_Text currentHealthText;
+    public TMP_Text currentRecoveryText;
+    public TMP_Text currentMoveSpeedText;
+    public TMP_Text currentMightText;
+    public TMP_Text currentProjectileSpeedText;
+    public TMP_Text currentPickUpRangeText;
 
     [Header("Results Screen Text")]
     public Image chosenCharacterImage;
-    public Text chosenCharacterName;
-    public Text levelReachedDisplay;
-    public Text timeSurvivedDisplay;
+    public TMP_Text chosenCharacterName;
+    public TMP_Text levelReachedDisplay;
+    public TMP_Text timeSurvivedDisplay;
     public List<Image> chosenWeaponsUI = new List<Image>(6);
     public List<Image> chosenPassiveItemsUI = new List<Image>(6);
 
     [Header("Stopwatch")]
     public float timeLimit; // The time limit in seconds
     float stopwatchTime; // The current time on the stopwatch
-    public Text stopWatchDisplay;
+    public TMPro.TMP_Text stopWatchDisplay;
 
     // flag to check if the game is over
     public bool isGameOver = false;
