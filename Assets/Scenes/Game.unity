@@ -882,11 +882,20 @@ MonoBehaviour:
     waveQuota: 0
     spawnInterval: 1
     spawnCount: 0
+  - name: Wave 2
+    enemyGroups:
+    - enemyName: Red Bat
+      enemyCount: 5
+      spawnCount: 0
+      enemyPrefab: {fileID: 8972377595951973060, guid: e38d8b180349d8c4e83c8c977b0faab4, type: 3}
+    waveQuota: 0
+    spawnInterval: 3
+    spawnCount: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 4
+  maxEnemiesAllowed: 3
   maxEnemiesReached: 0
-  waveInterval: 3
+  waveInterval: 5
   spawnPositions:
   - {fileID: 449318086}
   - {fileID: 1455105977}

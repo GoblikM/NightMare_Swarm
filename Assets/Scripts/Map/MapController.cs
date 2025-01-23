@@ -6,10 +6,9 @@ public class MapController : MonoBehaviour
     public List<GameObject> terrainChunks;
     public GameObject player;
     public float checkerRadius;
-    private Vector3 noTerrainPosition;
     public LayerMask terrainLayer;
     public GameObject currentChunk;
-    private Player playerMovement;
+    Vector3 playerLastPosition;
 
     [Header("Optimization")]
     public List<GameObject> spawnedChunks;
@@ -19,22 +18,10 @@ public class MapController : MonoBehaviour
     private float optimizationCooldown;
     public float optimizationCooldownDuration;
 
-    // Directional markers
-    private Dictionary<string, string> directions = new Dictionary<string, string>()
-    {
-        { "Right", "Right" },
-        { "Left", "Left" },
-        { "Up", "Up" },
-        { "Down", "Down" },
-        { "UpRight", "UpRight" },
-        { "DownRight", "DownRight" },
-        { "UpLeft", "UpLeft" },
-        { "DownLeft", "DownLeft" }
-    };
 
     private void Start()
     {
-        playerMovement = FindObjectOfType<Player>();
+        playerLastPosition = player.transform.position;
     }
 
     private void Update()
@@ -45,86 +32,106 @@ public class MapController : MonoBehaviour
 
     void ChunkChecker()
     {
-        if (currentChunk == null)
+        if (!currentChunk)
         {
             return;
         }
 
-        // Get player direction
-        Vector2 playerMoveDir = playerMovement.GetPlayerMoveDirNormalized();
+        Vector3 moveDir = player.transform.position - playerLastPosition;
+        playerLastPosition = player.transform.position;
 
-        foreach (var dir in directions)
+        string directionName = GetDirectionName(moveDir);
+
+        CheckAndSpawnChunk(directionName);
+        if (directionName.Contains("Up"))
         {
-            // If player is moving in that direction, check for terrain
-            if (IsMovingInDirection(playerMoveDir, dir.Key))
+            CheckAndSpawnChunk("Up");
+        }
+        else if (directionName.Contains("Down"))
+        {
+            CheckAndSpawnChunk("Down");
+        }
+        else if (directionName.Contains("Left"))
+        {
+            CheckAndSpawnChunk("Left");
+        }
+        else if (directionName.Contains("Right"))
+        {
+            CheckAndSpawnChunk("Right");
+        }
+    }
+
+    void CheckAndSpawnChunk(string direction)
+    {
+        if (!Physics2D.OverlapCircle(currentChunk.transform.Find(direction).position, checkerRadius, terrainLayer))
+        {
+            SpawnChunk(currentChunk.transform.Find(direction).position);
+        }
+    }
+
+        string GetDirectionName(Vector3 direction)
+        {
+            direction = direction.normalized;
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
-                CheckForTerrain(dir.Key);
-                break; // We only need to check one direction at a time
+                // Moving Horizontally
+                if (direction.y > 0.5f)
+                {
+                    // also moving up
+                    return direction.x > 0 ? "UpRight" : "UpLeft";
+                }
+                else if (direction.y < -0.5f)
+                {
+                    // also moving down
+                    return direction.x > 0 ? "DownRight" : "DownLeft";
+                }
+                else
+                {
+                    // only moving horizontally
+                    return direction.x > 0 ? "Right" : "Left";
+                }
+            }
+            else
+            {
+                // Moving Vertically
+                if (direction.x > 0.5f)
+                {
+                    // also moving right
+                    return direction.y > 0 ? "UpRight" : "DownRight";
+                }
+                else if (direction.x < -0.5f)
+                {
+                    // also moving left
+                    return direction.y > 0 ? "UpLeft" : "DownLeft";
+                }
+                else
+                {
+                    // only moving vertically
+                    return direction.y > 0 ? "Up" : "Down";
+                }
             }
         }
-    }
 
-    bool IsMovingInDirection(Vector2 moveDir, string direction)
-    {
-        switch (direction)
+
+        void SpawnChunk(Vector3 spawnPosition)
         {
-            case "Right":
-                return moveDir.x > 0 && moveDir.y == 0;
-            case "Left":
-                return moveDir.x < 0 && moveDir.y == 0;
-            case "Up":
-                return moveDir.y > 0 && moveDir.x == 0;
-            case "Down":
-                return moveDir.y < 0 && moveDir.x == 0;
-            case "UpRight":
-                return moveDir.x > 0 && moveDir.y > 0;
-            case "DownRight":
-                return moveDir.x > 0 && moveDir.y < 0;
-            case "UpLeft":
-                return moveDir.x < 0 && moveDir.y > 0;
-            case "DownLeft":
-                return moveDir.x < 0 && moveDir.y < 0;
-            default:
-                return false;
+            int randomIndex = Random.Range(0, terrainChunks.Count);
+            latestChunk = Instantiate(terrainChunks[randomIndex], spawnPosition, Quaternion.identity);
+            spawnedChunks.Add(latestChunk);
         }
-    }
 
-    void CheckForTerrain(string direction)
-    {
-        // Find the position of the corresponding direction and check for terrain
-        Transform directionTransform = currentChunk.transform.Find(direction);
-        if (directionTransform != null)
+        void ChunkOptimization()
         {
-            if (!Physics2D.OverlapCircle(directionTransform.position, checkerRadius, terrainLayer))
+            optimizationCooldown -= Time.deltaTime;
+            if (optimizationCooldown > 0f) return;
+
+            optimizationCooldown = optimizationCooldownDuration;
+
+            foreach (GameObject chunk in spawnedChunks)
             {
-                noTerrainPosition = directionTransform.position;
-                SpawnChunk();
+                opDistance = Vector2.Distance(player.transform.position, chunk.transform.position);
+                chunk.SetActive(opDistance <= maxOptimizationDistance);
             }
         }
-        else
-        {
-            Debug.LogWarning("Direction not found: " + direction);
-        }
-    }
-
-    void SpawnChunk()
-    {
-        int randomIndex = Random.Range(0, terrainChunks.Count);
-        latestChunk = Instantiate(terrainChunks[randomIndex], noTerrainPosition, Quaternion.identity);
-        spawnedChunks.Add(latestChunk);
-    }
-
-    void ChunkOptimization()
-    {
-        optimizationCooldown -= Time.deltaTime;
-        if (optimizationCooldown > 0f) return;
-
-        optimizationCooldown = optimizationCooldownDuration;
-
-        foreach (GameObject chunk in spawnedChunks)
-        {
-            opDistance = Vector2.Distance(player.transform.position, chunk.transform.position);
-            chunk.SetActive(opDistance <= maxOptimizationDistance);
-        }
-    }
 }
+

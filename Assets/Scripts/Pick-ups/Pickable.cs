@@ -6,12 +6,18 @@ using UnityEngine;
 /**
  * * This class is the parent class of all pickable objects in the game.
  * * */
-public class Pickable : MonoBehaviour
+public class Pickable : MonoBehaviour, ICollectible
 {
+    protected bool hasBeenCollected = false;
+
+    public virtual void Collect()
+    {
+        hasBeenCollected = true;
+    }
 
     /**
-     * When the player collides with the pickable object, the object will be destroyed.
-     * */
+* When the player collides with the pickable object, the object will be destroyed.
+* */
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
