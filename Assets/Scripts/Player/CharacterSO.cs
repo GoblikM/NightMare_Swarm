@@ -6,6 +6,14 @@ using UnityEngine;
 public class CharacterSO : ScriptableObject
 {
 
+    [SerializeField]
+    Sprite icon;
+    public Sprite Icon { get => icon; private set => icon = value; }
+
+    [SerializeField]
+    new string name;
+    public string Name { get => name; private set => name = value; }
+
     // Base stats for the player character, this will be used to set the stats of the player character
     [SerializeField]
     private GameObject defaultWeapon;

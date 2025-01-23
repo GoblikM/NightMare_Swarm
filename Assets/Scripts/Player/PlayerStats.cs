@@ -194,6 +194,8 @@ public class PlayerStats : MonoBehaviour
         GameManager.instance.currentProjectileSpeedText.text = "Projectile Speed: " + CurrentProjectileSpeed.ToString();
         GameManager.instance.currentPickUpRangeText.text = "Pick Up Range: " + CurrentPickUpRange.ToString();
 
+        GameManager.instance.AssignChosenCharacterUI(characterData);
+
 
     }
 
@@ -286,6 +288,8 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Player died");
         if(!GameManager.instance.isGameOver)
         {
+            GameManager.instance.AssignLevelReachedUI(level);
+            GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponUISlotImages, inventory.passiveItemUISlotsImages);
             GameManager.instance.GameOver();
         }
     }

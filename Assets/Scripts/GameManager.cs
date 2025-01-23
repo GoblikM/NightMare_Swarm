@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,17 +21,27 @@ public class GameManager : MonoBehaviour
 
     public GameState previousState;
 
-    [Header("UI")]
+    [Header("Screens")]
     public GameObject pauseMenu;
     public GameObject resultsScreen;
 
     // Current Stat displays
+    [Header("Current Stats")]
     public Text currentHealthText;
     public Text currentRecoveryText;
     public Text currentMoveSpeedText;
     public Text currentMightText;
     public Text currentProjectileSpeedText;
     public Text currentPickUpRangeText;
+
+    [Header("Results Screen Text")]
+    public Image chosenCharacterImage;
+    public Text chosenCharacterName;
+    public Text levelReachedDisplay;
+    public List<Image> chosenWeaponsUI = new List<Image>(6);
+    public List<Image> chosenPassiveItemsUI = new List<Image>(6);
+
+
 
     public bool isGameOver = false;
 
@@ -151,5 +162,58 @@ public class GameManager : MonoBehaviour
         resultsScreen.SetActive(true);
     }
 
+    public void AssignChosenCharacterUI(CharacterSO character)
+    {
+        chosenCharacterImage.sprite = character.Icon;
+        chosenCharacterName.text = character.Name;
+    }
 
+    public void AssignLevelReachedUI(int levelReached)
+    {
+        levelReachedDisplay.text = levelReached.ToString();
+    }
+
+    public void AssignChosenWeaponsAndPassiveItemsUI(List<Image> chosenWeaponsData, List<Image> chosenPassiveItemData)
+    {
+        if (chosenWeaponsData.Count != chosenWeaponsUI.Count || chosenPassiveItemData.Count != chosenPassiveItemsUI.Count)
+        {
+            Debug.Log("Chosen weapons and passive items data lists have differennt lenghts");
+            return;
+        }
+
+        // Assign chosen weapons data to chosenWeaponsUI
+        for (int i = 0; i < chosenWeaponsUI.Count; i++)
+        {
+            // Check if the weapon has a sprite
+            if (chosenWeaponsData[i].sprite)
+            {
+                // Enable corresponding UI image and assign the sprite
+                chosenWeaponsUI[i].enabled = true;
+                chosenWeaponsUI[i].sprite = chosenWeaponsData[i].sprite;
+            }
+            else
+            {
+                // If the sprite is null, disable the UI image
+                chosenWeaponsUI[i].enabled = false;
+            }
+        }
+
+        // Assign chosen weapons data to chosenPassiveItemsUI
+        for (int i = 0; i < chosenPassiveItemsUI.Count; i++)
+        {
+            // Check if the passive item has a sprite
+            if (chosenPassiveItemData[i].sprite)
+            {
+                // Enable corresponding UI image and assign the sprite
+                chosenPassiveItemsUI[i].enabled = true;
+                chosenPassiveItemsUI[i].sprite = chosenPassiveItemData[i].sprite;
+            }
+            else
+            {
+                // If the sprite is null, disable the UI image
+                chosenPassiveItemsUI[i].enabled = false;
+            }
+        }
+
+    }
 }

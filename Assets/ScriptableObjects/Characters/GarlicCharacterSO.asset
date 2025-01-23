@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e535641509a5f849ad3e5b7c839e681, type: 3}
   m_Name: GarlicCharacterSO
   m_EditorClassIdentifier: 
+  icon: {fileID: 1938997974, guid: c20577d35c101ea4482806ba8f1898ee, type: 3}
+  name: Garlic Character
   defaultWeapon: {fileID: 5617147560966605262, guid: 22f773a87049d6e42815f4fce5204553, type: 3}
-  maxHealth: 10
+  maxHealth: 1000
   moveSpeed: 5
   recovery: 1
   might: 1
