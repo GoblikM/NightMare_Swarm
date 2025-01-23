@@ -14,6 +14,33 @@ public class InventoryManager : MonoBehaviour
     public List<Image> weaponUISlotImages = new List<Image>(6);
     public List<Image> passiveItemUISlotsImages = new List<Image>(6);
 
+    [System.Serializable]
+    public class WeapondUpgrade
+    {
+        public GameObject initialWeapond;
+        public WeaponSO weaponData;
+    }
+
+    [System.Serializable]
+    public class PassiveItemUpgrade
+    {
+        public GameObject initialPassiveItem;
+        public PassiveItemSO passiveItemData;
+    }
+
+    [System.Serializable]
+    public class UpgradeUI
+    {
+        public Text upgradeNameDisplay;
+        public Text upgradeDescriptionDisplay;
+        public Image upgradeIcon;
+        public Button upgradeButton;
+    }
+
+    public List<WeapondUpgrade> weaponUpgradeOptions = new List<WeapondUpgrade>(); // List of weapon upgrade options
+    public List<PassiveItemUpgrade> passiveItemUpgradeOptions = new List<PassiveItemUpgrade>(); // List of passive item upgrade options
+    public List<UpgradeUI> upgradeUIOptions = new List<UpgradeUI>(); // List of UI for upgrade options present in the scene
+
     /// <summary>
     /// Add a weapon to the inventory to specified slot
     /// </summary>

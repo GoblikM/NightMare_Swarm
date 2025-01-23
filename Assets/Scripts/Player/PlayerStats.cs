@@ -218,6 +218,7 @@ public class PlayerStats : MonoBehaviour
     public void IncreaseExperience(int amount)
     {
         experience += amount;
+        CheckLvlUp();
     }
 
     public void CheckLvlUp()
@@ -242,6 +243,7 @@ public class PlayerStats : MonoBehaviour
             }
         }
         experienceCap += experienceCapIncrease;
+        GameManager.instance.StartLevelUp();
     }
 
     public void TakeDamage(float damage)

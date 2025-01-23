@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     {
         Gameplay,
         Pause,
-        GameOver
+        GameOver,
+        LevelUp
     }
 
     // Store the current state of the game
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     [Header("Screens")]
     public GameObject pauseMenu;
     public GameObject resultsScreen;
+    public GameObject levelUpScreen;
 
     // Current Stat displays
     [Header("Current Stats")]
@@ -38,12 +40,20 @@ public class GameManager : MonoBehaviour
     public Image chosenCharacterImage;
     public Text chosenCharacterName;
     public Text levelReachedDisplay;
+    public Text timeSurvivedDisplay;
     public List<Image> chosenWeaponsUI = new List<Image>(6);
     public List<Image> chosenPassiveItemsUI = new List<Image>(6);
 
+    [Header("Stopwatch")]
+    public float timeLimit; // The time limit in seconds
+    float stopwatchTime; // The current time on the stopwatch
+    public Text stopWatchDisplay;
 
-
+    // flag to check if the game is over
     public bool isGameOver = false;
+
+    // Flag to check if the player is choosing their upgrades
+    public bool choosingUpgrade;
 
     private void Awake()
     {
@@ -66,6 +76,7 @@ public class GameManager : MonoBehaviour
             case GameState.Gameplay:
                 // Update the gameplay
                 CheckForPauseAndResume();
+                UpdateStopWatch();
                 break;
             case GameState.Pause:
                 // Update the pause menu
@@ -79,6 +90,15 @@ public class GameManager : MonoBehaviour
                     Time.timeScale = 0f; // Stop the game
                     Debug.Log("Game Over");
                     DisplayResults();
+                }
+                break;
+            case GameState.LevelUp:
+                if (!choosingUpgrade)
+                {
+                    choosingUpgrade = true;
+                    Time.timeScale = 0f; // Pause the game
+                    Debug.Log("Level Up");
+                    levelUpScreen.SetActive(true);
                 }
                 break;
             default:
@@ -150,10 +170,12 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         resultsScreen.SetActive(false);
+        levelUpScreen.SetActive(false);
     }
 
     public void GameOver()
     {
+        timeSurvivedDisplay.text = stopWatchDisplay.text;
         ChangeState(GameState.GameOver);
     }
 
@@ -215,5 +237,39 @@ public class GameManager : MonoBehaviour
             }
         }
 
+    }
+
+    void UpdateStopWatch()
+    {
+        stopwatchTime += Time.deltaTime;
+
+        UpdateStopWatchDisplay();
+
+        if (stopwatchTime >= timeLimit)
+        {
+            GameOver();
+        }
+    }
+
+    void UpdateStopWatchDisplay()
+    {
+        // calculate the number if minutes and seconds that have elapsed
+        int minutes = Mathf.FloorToInt(stopwatchTime / 60);
+        int seconds = Mathf.FloorToInt(stopwatchTime % 60);
+        // Update the stopwatch display
+        stopWatchDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void StartLevelUp()
+    {
+        ChangeState(GameState.LevelUp);
+    }
+
+    public void EndLevelUp()
+    {
+        choosingUpgrade = false;
+        Time.timeScale = 1f; // Resume the game
+        levelUpScreen.SetActive(false);
+        ChangeState(GameState.Gameplay);
     }
 }
