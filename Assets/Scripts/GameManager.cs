@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour
     // Flag to check if the player is choosing their upgrades
     public bool choosingUpgrade;
 
+    // Reference to the player object
+    public GameObject playerObject;
+
     private void Awake()
     {
         // Singleton pattern to ensure only one instance of the GameManager exists
@@ -263,6 +266,7 @@ public class GameManager : MonoBehaviour
     public void StartLevelUp()
     {
         ChangeState(GameState.LevelUp);
+        playerObject.SendMessage("RemoveAndApplyUpgrades");
     }
 
     public void EndLevelUp()

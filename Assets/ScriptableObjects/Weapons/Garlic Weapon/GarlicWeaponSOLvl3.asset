@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b868844fac3040e4fb38eb7533b4da21, type: 3}
-  m_Name: KnifeWeaponSOLvl2
+  m_Name: GarlicWeaponSOLvl3
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 7256014068030382074, guid: 5d2df56abad53d54595562b7789148e6, type: 3}
-  damage: 5
-  speed: 15
-  cooldownDuration: 2
-  pierceCount: 1
+  weaponPrefab: {fileID: 3458183996859970548, guid: e83fb437797af1f43835ed8c862a50bf, type: 3}
+  damage: 7
+  speed: 0
+  cooldownDuration: 2.5
+  pierceCount: 0
   level: 2
   nextLevelPrefab: {fileID: 0}
-  name: Knife Level 2
-  description: Speed us up by 5.
-  icon: {fileID: 1822731825, guid: fc3994312cb13e144998df6236d3acac, type: 3}
+  name: Garlic Level 3
+  description: Damage up by 2
+  icon: {fileID: 137760408, guid: b4c45a9947517094bbb1986d55fe4542, type: 3}

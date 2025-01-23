@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -157,6 +158,11 @@ public class PlayerStats : MonoBehaviour
     public int weaponSlotIndex;
     public int passiveItemSlotIndex;
 
+    [Header("UI")]
+    public Image healthBar;
+    public Image experienceBar;
+    public Text levelText;
+
     public GameObject secondWeaponTest;
     public GameObject firstPassiveItemTest, secondPassiveItemTest;
 
@@ -176,8 +182,8 @@ public class PlayerStats : MonoBehaviour
 
         // Spawn the default weapon
         SpawnWeapon(characterData.DefaultWeapon);
-        SpawnWeapon(secondWeaponTest);
-        SpawnPassiveItem(firstPassiveItemTest);
+        //SpawnWeapon(secondWeaponTest);
+        //SpawnPassiveItem(firstPassiveItemTest);
         SpawnPassiveItem(secondPassiveItemTest);
     }
 
@@ -195,6 +201,10 @@ public class PlayerStats : MonoBehaviour
         GameManager.instance.currentPickUpRangeText.text = "Pick Up Range: " + CurrentPickUpRange.ToString();
 
         GameManager.instance.AssignChosenCharacterUI(characterData);
+
+        UpdateHealthBar();
+        UpdateExperienceBar();
+        UpdateLevelText();
 
 
     }
@@ -219,6 +229,8 @@ public class PlayerStats : MonoBehaviour
     {
         experience += amount;
         CheckLvlUp();
+
+        UpdateExperienceBar();
     }
 
     public void CheckLvlUp()
@@ -243,7 +255,18 @@ public class PlayerStats : MonoBehaviour
             }
         }
         experienceCap += experienceCapIncrease;
+        UpdateLevelText();
         GameManager.instance.StartLevelUp();
+    }
+
+    void UpdateExperienceBar()
+    {
+        experienceBar.fillAmount = (float)experience / experienceCap;
+    }
+
+    void UpdateLevelText()
+    {
+        levelText.text = "LVL " + level.ToString();
     }
 
     public void TakeDamage(float damage)
@@ -258,7 +281,9 @@ public class PlayerStats : MonoBehaviour
             if (CurrentHealth <= 0)
             {
                 Die();
-            }     
+            }
+            
+            UpdateHealthBar();
         }
     }
 
@@ -282,6 +307,11 @@ public class PlayerStats : MonoBehaviour
             }
         }
       
+    }
+
+    void UpdateHealthBar()
+    {
+        healthBar.fillAmount = currentHealth / characterData.MaxHealth;
     }
 
     public void Die()
