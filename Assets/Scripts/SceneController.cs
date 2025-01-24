@@ -11,14 +11,14 @@ public class SceneController : MonoBehaviour
 
     public void Start()
     {
-        MusicManager.instance.PlayMusic(music, 0.5f);
+        MusicManager.instance.PlayMusic(music, 0.3f);
     }
 
     public void SceneChange(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1; // Reset the time scale
-        MusicManager.instance.PlayMusic(music, 0.5f);
+        MusicManager.instance.PlayMusic(music, 0.3f);
     }
 
     public void QuitGame()

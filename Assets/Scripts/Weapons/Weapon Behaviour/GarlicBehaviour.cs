@@ -5,30 +5,30 @@ using UnityEngine;
 public class GarlicBehaviour : MeleeWeaponBehaviour
 {
 
-    List<GameObject> marketEnemies;
+    List<GameObject> damagedEnemies;
 
     protected override void Start()
     {
         base.Start();
-        marketEnemies = new List<GameObject>();
+        damagedEnemies = new List<GameObject>();
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.CompareTag("Enemy") && !marketEnemies.Contains(collider.gameObject))
+        if(collider.CompareTag("Enemy") && !damagedEnemies.Contains(collider.gameObject))
         {
             collider.GetComponent<EnemyStats>().TakeDamage(GetCurrentDamage(), transform.position);
              // Add the enemy to the list of enemies that have been hit,
             // so that they don't take damage again from the same instance of the garlic
-            marketEnemies.Add(collider.gameObject);
+            damagedEnemies.Add(collider.gameObject);
 
         }
         else if (collider.CompareTag("Breakable"))
         {
-            if (collider.gameObject.TryGetComponent(out BreakableProps breakable) && !marketEnemies.Contains(collider.gameObject))
+            if (collider.gameObject.TryGetComponent(out BreakableProps breakable) && !damagedEnemies.Contains(collider.gameObject))
             {
                 breakable.TakeDamage(GetCurrentDamage());
-                marketEnemies.Add(collider.gameObject);
+                damagedEnemies.Add(collider.gameObject);
             }
         }
     }

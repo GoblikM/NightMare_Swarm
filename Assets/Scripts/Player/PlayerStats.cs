@@ -8,6 +8,9 @@ public class PlayerStats : MonoBehaviour
 {
     private CharacterSO characterData;
 
+    [Header("Player Sounds")]
+    public AudioClip[] playerHurtSounds;
+
     // current stats
     float currentHealth;
     float currentRecovery;
@@ -271,6 +274,7 @@ public class PlayerStats : MonoBehaviour
         if(!isInvincible)
         {
             CurrentHealth -= damage;
+            SoundFXManager.instance.PlaySoundFX(playerHurtSounds[Random.Range(0, playerHurtSounds.Length)], transform, 1f);
 
             if (damageEffect)
             {
@@ -296,6 +300,8 @@ public class PlayerStats : MonoBehaviour
         {
             CurrentHealth = characterData.MaxHealth;
         }
+
+        UpdateHealthBar();
     }
 
     public void RecoverHealth()

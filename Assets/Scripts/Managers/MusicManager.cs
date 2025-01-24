@@ -25,7 +25,7 @@ public class MusicManager : MonoBehaviour
     }
 
 
-    public void PlayMusic(AudioClip audioClip, float volume)
+    public void PlayMusic(AudioClip audioClip, float volume = 0.3f)
     {
         // check if the audio source is playing and if the clip is the same
         if (audioSource.isPlaying && audioSource.clip == audioClip)
