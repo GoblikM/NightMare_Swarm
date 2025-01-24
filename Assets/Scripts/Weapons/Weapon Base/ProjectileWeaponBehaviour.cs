@@ -95,7 +95,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         if (collider.CompareTag("Enemy"))
         {
             EnemyStats enemy = collider.GetComponent<EnemyStats>();
-            enemy.TakeDamage(GetCurrentDamage());
+            enemy.TakeDamage(GetCurrentDamage(), transform.position);
             ReducePierce();
         }
         // Check if the projectile hits a breakable object

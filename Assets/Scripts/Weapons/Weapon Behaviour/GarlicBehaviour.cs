@@ -17,7 +17,7 @@ public class GarlicBehaviour : MeleeWeaponBehaviour
     {
         if(collider.CompareTag("Enemy") && !marketEnemies.Contains(collider.gameObject))
         {
-            collider.GetComponent<EnemyStats>().TakeDamage(GetCurrentDamage());
+            collider.GetComponent<EnemyStats>().TakeDamage(GetCurrentDamage(), transform.position);
              // Add the enemy to the list of enemies that have been hit,
             // so that they don't take damage again from the same instance of the garlic
             marketEnemies.Add(collider.gameObject);

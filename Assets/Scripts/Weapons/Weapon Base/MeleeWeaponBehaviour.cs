@@ -36,7 +36,7 @@ public class MeleeWeaponBehaviour : MonoBehaviour
     {
         if (collider.CompareTag("Enemy"))
         {
-            collider.GetComponent<EnemyStats>().TakeDamage(GetCurrentDamage());
+            collider.GetComponent<EnemyStats>().TakeDamage(GetCurrentDamage(), transform.position);
         }
         else if (collider.CompareTag("Breakable"))
         {

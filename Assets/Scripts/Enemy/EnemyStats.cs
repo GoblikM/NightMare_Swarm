@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class EnemyStats : MonoBehaviour
 {
     public EnemySO enemyData;
@@ -17,6 +18,14 @@ public class EnemyStats : MonoBehaviour
     public float despawnDistance = 20f;
     Transform player;
 
+    [Header("Damage Feedback")]
+    public Color damageColor = new Color(1, 0, 0, 1); // Color of the damage feedback
+    public float damageFlashDuration = 0.1f; // Duration of the damage feedback
+    public float deathFadeTime = 0.5f; // Time taken for the enemy to fade out when killed
+    Color originalColor;
+    SpriteRenderer spriteRenderer;
+    EnemyMovement enemyMovement;
+
     private void Awake()
     {
         // Set the current stats to the default stats
@@ -28,6 +37,9 @@ public class EnemyStats : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindObjectOfType<PlayerStats>().transform;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
+        enemyMovement = GetComponent<EnemyMovement>();
     }
 
     private void Update()
@@ -38,18 +50,57 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+
+    public void TakeDamage(float damage, Vector2 sourcePosition, float knockbackForce = 5f, float knockbackDuration = 0.2f)
     {
         currentHealth -= damage;
-        if(currentHealth <= 0)
+        StartCoroutine(DamageFlash()); // Flash the enemy sprite when it takes damage
+
+        if(knockbackForce > 0)
+        {
+            Vector2 direction = (Vector2)transform.position - sourcePosition;
+            enemyMovement.Knockback(direction.normalized * knockbackForce, knockbackDuration);
+        }
+
+      
+        if (currentHealth <= 0)
         {
             Die();
         }
     }
 
+    /// <summary>
+    /// Flash the enemy sprite when it takes damage
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator DamageFlash()
+    {
+        spriteRenderer.color = damageColor;
+        yield return new WaitForSeconds(damageFlashDuration);
+        spriteRenderer.color = originalColor;
+    }
+
     public void Die()
     {
-        // Destroy the enemy object
+        StartCoroutine(KillFade());
+    }
+
+    IEnumerator KillFade()
+    {
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+        float t = 0;
+        float originalAlpha = spriteRenderer.color.a;
+
+        while (t < deathFadeTime)
+        {
+            yield return wait;
+            t += Time.deltaTime;
+
+            // set the color for this frame, with the alpha value decreasing over time
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b,(1 - t / deathFadeTime) * originalAlpha);
+
+        }
+
         Destroy(gameObject);
     }
 
