@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
 
     public GameState previousState;
 
+    [Header("Damage Text Settings")]
+    public Canvas damageTextCanvas;
+    public float textFontSize = 20;
+    public TMP_FontAsset textFont;
+    public Camera referenceCamera;
+
     [Header("Screens")]
     public GameObject pauseMenu;
     public GameObject resultsScreen;
@@ -276,5 +282,65 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f; // Resume the game
         levelUpScreen.SetActive(false);
         ChangeState(GameState.Gameplay);
+    }
+
+
+    IEnumerator GenerateFloatingTextCoroutine(string text, Transform target, float duration = 1f, float speed = 50f)
+    {
+        GameObject textObject = new GameObject("Floating Text");
+        RectTransform rect = textObject.AddComponent<RectTransform>();
+        TextMeshProUGUI textComponent = textObject.AddComponent<TextMeshProUGUI>();
+        textComponent.text = text;
+        textComponent.horizontalAlignment = HorizontalAlignmentOptions.Center;
+        textComponent.verticalAlignment = VerticalAlignmentOptions.Middle;
+        textComponent.fontSize = textFontSize;
+        if (textFont) textComponent.font = textFont;
+
+        // Zkontrolujeme existenci targetu
+        if (target != null)
+            rect.position = referenceCamera.WorldToScreenPoint(target.position);
+        else
+            rect.position = Vector3.zero;
+
+        textObject.transform.SetParent(instance.damageTextCanvas.transform);
+
+        WaitForEndOfFrame wait = new();
+        float t = 0;
+        float yOffset = 0;
+
+        while (t < duration)
+        {
+            yield return wait;
+            t += Time.deltaTime;
+
+            // Ovìø, zda textObject nebyl znièen
+            if (rect == null)
+                yield break; // Ukonèí coroutine, pokud je objekt znièen
+
+            // Zmìna barvy textu
+            textComponent.color = new Color(textComponent.color.r, textComponent.color.g, textComponent.color.b, 1 - t / duration);
+
+            // Kontrola existence targetu
+            if (target != null)
+            {
+                yOffset += speed * Time.deltaTime;
+                rect.position = referenceCamera.WorldToScreenPoint(target.position + new Vector3(0, yOffset));
+            }
+        }
+
+        // Na konci zniè textObject (pokud už nebyl znièen)
+        if (textObject != null)
+            Destroy(textObject);
+    }
+
+    public static void GenerateFloatingText(string text, Transform target, float duration = 1f, float speed = 1f)
+    {
+        if (!instance.damageTextCanvas) return;
+
+        if(!instance.referenceCamera) instance.referenceCamera = Camera.main;
+
+        instance.StartCoroutine(instance.GenerateFloatingTextCoroutine(
+            text, target, duration, speed
+            ));
     }
 }

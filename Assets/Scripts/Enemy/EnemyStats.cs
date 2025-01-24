@@ -56,7 +56,12 @@ public class EnemyStats : MonoBehaviour
         currentHealth -= damage;
         StartCoroutine(DamageFlash()); // Flash the enemy sprite when it takes damage
 
-        if(knockbackForce > 0)
+        if(damage > 0)
+        {
+            GameManager.GenerateFloatingText(Mathf.FloorToInt(damage).ToString(), transform);
+        }
+
+        if (knockbackForce > 0)
         {
             Vector2 direction = (Vector2)transform.position - sourcePosition;
             enemyMovement.Knockback(direction.normalized * knockbackForce, knockbackDuration);
