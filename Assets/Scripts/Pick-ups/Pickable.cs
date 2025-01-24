@@ -8,7 +8,7 @@ using UnityEngine;
  * * */
 public class Pickable : MonoBehaviour, ICollectible
 {
-    protected bool hasBeenCollected = false;
+    public bool hasBeenCollected = false;
 
     public virtual void Collect()
     {

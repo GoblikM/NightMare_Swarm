@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1006495511681546461}
   - component: {fileID: 6312398528680314353}
   m_Layer: 0
-  m_Name: KnifeWeaponLvl2
+  m_Name: Evolved Knife Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1878055751
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1822731825, guid: fc3994312cb13e144998df6236d3acac, type: 3}
+  m_Sprite: {fileID: -472924147, guid: fc3994312cb13e144998df6236d3acac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba6da07f8e5c094a970789d16c9844f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 34b5566a413f98d4bb32642d71a15aeb, type: 2}
+  weaponData: {fileID: 11400000, guid: 7e88be56592c31146830007e3a65c551, type: 2}
   destroyAfterSeconds: 3
 --- !u!60 &1006495511681546461
 PolygonCollider2D:
@@ -137,7 +137,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.71875, y: 0.75}
+    oldSize: {x: 0.6875, y: 0.75}
     newSize: {x: 0.71875, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,20 +145,25 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.3656668, y: -0.35193014}
-      - {x: -0.3128712, y: -0.38682202}
-      - {x: -0.19684061, y: -0.2837172}
-      - {x: -0.120354034, y: -0.35317668}
-      - {x: -0.06475276, y: -0.29698205}
-      - {x: -0.13389267, y: -0.23752397}
-      - {x: 0.36096528, y: 0.24856234}
-      - {x: 0.359375, y: 0.375}
-      - {x: 0.2991734, y: 0.37340972}
-      - {x: -0.21407276, y: -0.13906756}
-      - {x: -0.2965193, y: -0.08294005}
-      - {x: -0.34488502, y: -0.14952853}
-      - {x: -0.27733573, y: -0.19239026}
-      - {x: -0.3736875, y: -0.2778955}
+    - - {x: -0.2599148, y: -0.28892893}
+      - {x: -0.2543701, y: -0.37557182}
+      - {x: -0.15971492, y: -0.38384408}
+      - {x: -0.15318714, y: -0.25379905}
+      - {x: -0.062098265, y: -0.25549513}
+      - {x: -0.0022267774, y: -0.25529984}
+      - {x: 0.035374135, y: -0.21485549}
+      - {x: 0.026985377, y: -0.13064696}
+      - {x: 0.35309014, y: 0.19343632}
+      - {x: 0.3477573, y: 0.34077165}
+      - {x: 0.31887418, y: 0.37950003}
+      - {x: 0.28679818, y: 0.3790348}
+      - {x: -0.10382066, y: -0.010815129}
+      - {x: -0.14476912, y: 0.0070702555}
+      - {x: -0.18349528, y: -0.011016667}
+      - {x: -0.22676802, y: -0.1796919}
+      - {x: -0.34375998, y: -0.18665424}
+      - {x: -0.34708706, y: -0.21039058}
+      - {x: -0.34781203, y: -0.27902055}
   m_UseDelaunayMesh: 0
 --- !u!50 &6312398528680314353
 Rigidbody2D:

@@ -164,9 +164,6 @@ public class PlayerStats : MonoBehaviour
     public Image experienceBar;
     public TMP_Text levelText;
 
-    public GameObject secondWeaponTest;
-    public GameObject firstPassiveItemTest, secondPassiveItemTest;
-
     private void Awake()
     {
         characterData = CharacterSelector.GetCharacterData();
@@ -183,9 +180,6 @@ public class PlayerStats : MonoBehaviour
 
         // Spawn the default weapon
         SpawnWeapon(characterData.DefaultWeapon);
-        //SpawnWeapon(secondWeaponTest);
-        //SpawnPassiveItem(firstPassiveItemTest);
-        SpawnPassiveItem(secondPassiveItemTest);
     }
 
     private void Start()
