@@ -21,9 +21,17 @@ public class SceneController : MonoBehaviour
         MusicManager.instance.PlayMusic(music, 0.3f);
     }
 
+    // Quit the game
     public void QuitGame()
     {
-        Application.Quit();
+        // check if the application is running in the editor
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+
     }
+
 
 }

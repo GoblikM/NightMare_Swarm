@@ -100,8 +100,7 @@ public class GameManager : MonoBehaviour
                     Time.timeScale = 0f; // Stop the game
                     Debug.Log("Game Over");
                     DisplayResults();
-                    MusicManager.instance.StopMusic();
-                    SoundFXManager.instance.PlaySoundFX(instance.resultsScreen.GetComponent<AudioSource>().clip, instance.resultsScreen.transform, 0.5f);
+                    MusicManager.instance.PlayMusic(instance.resultsScreen.GetComponent<AudioSource>().clip);
                 }
                 break;
             case GameState.LevelUp:
@@ -111,7 +110,7 @@ public class GameManager : MonoBehaviour
                     Time.timeScale = 0f; // Pause the game
                     Debug.Log("Level Up");
                     levelUpScreen.SetActive(true);
-                    SoundFXManager.instance.PlaySoundFX(instance.levelUpScreen.GetComponent<AudioSource>().clip, instance.levelUpScreen.transform, 0.6f);
+                    SoundFXManager.instance.PlaySoundFX(instance.levelUpScreen.GetComponent<AudioSource>().clip, instance.levelUpScreen.transform);
                 }
                 break;
             default:

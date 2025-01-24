@@ -15,6 +15,13 @@ public class SoundFXManager : MonoBehaviour
         {
             instance = this;
         }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>
@@ -23,7 +30,7 @@ public class SoundFXManager : MonoBehaviour
     /// <param name="audioClip"></param>
     /// <param name="spawnTransform"></param>
     /// <param name="volume"></param>
-    public void PlaySoundFX(AudioClip audioClip, Transform spawnTransform, float volume)
+    public void PlaySoundFX(AudioClip audioClip, Transform spawnTransform, float volume = 1f)
     {
         // spawn the gameObject with the audio source
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
