@@ -52,6 +52,13 @@ public class Player : MonoBehaviour
         if (GameManager.instance.isGameOver) return;
         moveDir.x = Input.GetAxisRaw("Horizontal");
         moveDir.y = Input.GetAxisRaw("Vertical");
+
+        // Smìr podle myši
+        if (Input.GetMouseButton(1)) // Pravé tlaèítko myši
+        {
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            moveDir = ((Vector2)mouseWorldPosition - rigidBody.position).normalized;
+        }
     }
 
     private void MovePlayer()
