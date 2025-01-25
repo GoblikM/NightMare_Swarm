@@ -25,7 +25,9 @@ public class EnemyStats : MonoBehaviour
     Color originalColor;
     SpriteRenderer spriteRenderer;
     EnemyMovement enemyMovement;
+    Animator animator;
 
+    private bool isAttacking = false;
     private void Awake()
     {
         // Set the current stats to the default stats
@@ -40,6 +42,7 @@ public class EnemyStats : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         enemyMovement = GetComponent<EnemyMovement>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -48,8 +51,9 @@ public class EnemyStats : MonoBehaviour
         {
             ReturnEnemy();
         }
-    }
 
+        PlayAttackAnimation();
+    }
 
     public void TakeDamage(float damage, Vector2 sourcePosition, float knockbackForce = 5f, float knockbackDuration = 0.2f)
     {
@@ -109,17 +113,37 @@ public class EnemyStats : MonoBehaviour
         Destroy(gameObject);
     }
 
-    /// <summary>
-    /// Deal damage to the player when the enemy collides with the player
-    /// </summary>
-    /// <param name="collision"></param>
+
     public void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && isAttacking)
         {
             PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
             player.TakeDamage(currentDamage);
         }
+    }
+
+    private void PlayAttackAnimation()
+    {
+        if (!animator) return;
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        if (distanceToPlayer <= enemyData.AttackRange)
+        {
+            animator.SetTrigger("Attack");
+            StartCoroutine(AttackCoroutine());  // Po spuštìní animace spustíme zpoždìní
+        }
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        // Nastavení flagu isAttacking
+        isAttacking = true;
+
+        // Poèkej na délku animace útoku (nebo jiný èas, pokud chceš jiný efekt)
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Po skonèení animace se útok považuje za dokonèený
+        isAttacking = false;
     }
 
     /// <summary>

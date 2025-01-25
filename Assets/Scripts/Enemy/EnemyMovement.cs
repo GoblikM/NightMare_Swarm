@@ -10,10 +10,14 @@ public class EnemyMovement : MonoBehaviour
     Vector2 knockbackVelocity;
     float knockbackDuration;
 
+    // Sprite renderer of the enemy
+    SpriteRenderer spriteRenderer;
+
     private void Start()
     {
         enemy = GetComponent<EnemyStats>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -32,8 +36,17 @@ public class EnemyMovement : MonoBehaviour
 
     private void MoveTowardsPlayer()
     {
+
         // Move the enemy towards the player
         transform.position = Vector2.MoveTowards(transform.position, player.position, enemy.currentSpeed * Time.deltaTime);
+        if(transform.position.x < player.position.x)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     /// <summary>

@@ -14,9 +14,9 @@ TagManager:
   - Water
   - UI
   - Terrain
-  - 
-  - 
-  - 
+  - PlayerMain
+  - PlayerFeet
+  - Enemy
   - 
   - 
   - 
@@ -45,6 +45,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1626027071
+    locked: 0
+  - name: Background Collision
+    uniqueID: 598309293
     locked: 0
   - name: Midground
     uniqueID: 2182965683
