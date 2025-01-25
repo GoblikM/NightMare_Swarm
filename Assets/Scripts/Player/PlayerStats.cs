@@ -185,6 +185,10 @@ public class PlayerStats : MonoBehaviour
 
         // Spawn the default weapon
         SpawnWeapon(characterData.DefaultWeapon);
+
+        //set runtime animator controller
+        GetComponentInChildren<PlayerAnimator>().SetAnimatorController(characterData.animatorController);
+
     }
 
     private void Start()

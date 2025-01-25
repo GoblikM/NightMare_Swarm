@@ -6,6 +6,9 @@ using UnityEngine;
 public class CharacterSO : ScriptableObject
 {
 
+    // Add runtime animation controller to the character scriptable object to be able to change the animation controller of the player character
+    public RuntimeAnimatorController animatorController;
+
     [SerializeField]
     Sprite icon;
     public Sprite Icon { get => icon; private set => icon = value; }

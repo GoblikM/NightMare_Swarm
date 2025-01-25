@@ -37,6 +37,12 @@ public class PlayerAnimator : MonoBehaviour
         }
     }
 
+    public void SetAnimatorController(RuntimeAnimatorController animatorController)
+    {
+        if(!animator) animator = GetComponent<Animator>();
+        animator.runtimeAnimatorController = animatorController;
+    }
+
 
 
 }
