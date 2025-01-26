@@ -306,6 +306,7 @@ public class GameManager : MonoBehaviour
 
         textObject.transform.SetParent(instance.damageTextCanvas.transform);
 
+
         WaitForEndOfFrame wait = new();
         float t = 0;
         float yOffset = 0;

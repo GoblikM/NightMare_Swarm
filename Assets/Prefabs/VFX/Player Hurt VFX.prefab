@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6630318812244023645}
   - component: {fileID: 7797013234320657697}
   m_Layer: 0
-  m_Name: Player Damage VFX
+  m_Name: Player Hurt VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

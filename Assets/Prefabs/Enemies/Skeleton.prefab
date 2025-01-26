@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4391080049647316070}
   - component: {fileID: 2920918546666008420}
   - component: {fileID: 8731995353098616733}
+  - component: {fileID: 1855410852181645907}
   m_Layer: 9
   m_Name: Skeleton
   m_TagString: Enemy
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1878055751
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -1118318789, guid: 948cac01779f6684f842f10a19ff0348, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -193,3 +194,30 @@ MonoBehaviour:
   - name: Blue Gem
     itemPrefab: {fileID: 7083157785162260699, guid: 7ae523a88eecdea48bb55bde88d18e69, type: 3}
     dropRate: 100
+--- !u!50 &1855410852181645907
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5898094566929483402}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 50
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
