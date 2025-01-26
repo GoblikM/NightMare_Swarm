@@ -515,6 +515,7 @@ MonoBehaviour:
   characterData:
   - {fileID: 11400000, guid: 4f0cef83d8bccd54ab6de9a0c768c7d1, type: 2}
   - {fileID: 11400000, guid: 3e48daab89ed6fe44a3cd1915089cabc, type: 2}
+  - {fileID: 11400000, guid: 1c0a806d238e6844199298bea1febd86, type: 2}
   characterCardPrefab: {fileID: 6674220279435820992, guid: 94d5e10fa32aa404e8c415f61da7c28a, type: 3}
   charactersGrid: {fileID: 3182651}
 --- !u!1 &1511930782

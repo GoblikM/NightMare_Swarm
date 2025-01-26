@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PlayerWhip
+  m_Controller: {fileID: 9100000, guid: 94654f076ea5509438bcbfe2aa7dd690, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8757db0b445965642b2834cdfb05400a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5df538bc3bd381f438b235a559c4d475, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4210cbae7da0baa4c855e6ad802c2a30, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 041a454e0422acf4e8b5044cca344b0c, type: 2}

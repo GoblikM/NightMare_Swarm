@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e535641509a5f849ad3e5b7c839e681, type: 3}
-  m_Name: KnifeCharacterSO
+  m_Name: WhipCharacterSO
   m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 94654f076ea5509438bcbfe2aa7dd690, type: 2}
-  icon: {fileID: 1938997974, guid: c20577d35c101ea4482806ba8f1898ee, type: 3}
-  name: Knife Character
-  defaultWeapon: {fileID: 1441512900164795850, guid: aba983b5909f437488bc0b75b6c4ab4f, type: 3}
+  animatorController: {fileID: 22100000, guid: 961e36c2e0ad7ad40aa5f49219a04401, type: 2}
+  icon: {fileID: 1036575374, guid: 5307f68ef521f4f4c811fbf33e69a325, type: 3}
+  name: Whip
+  defaultWeapon: {fileID: 1441512900164795850, guid: 0ae32ad1fda2899458bfb122501510c4, type: 3}
   maxHealth: 100
   moveSpeed: 5
   recovery: 1
   might: 1
-  projectileSpeed: 0
+  projectileSpeed: 1
   pickUpRange: 1.6
