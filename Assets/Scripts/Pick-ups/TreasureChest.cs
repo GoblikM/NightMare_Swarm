@@ -5,10 +5,14 @@ using UnityEngine;
 public class TreasureChest : MonoBehaviour
 {
     InventoryManager inventoryManager;
+    SpriteRenderer spriteRenderer;
+    [SerializeField]
+    Sprite openChestSprite;
 
     void Start()
     {
         inventoryManager = FindAnyObjectByType<InventoryManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -16,7 +20,9 @@ public class TreasureChest : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             OpenTreasureChest();
-            Destroy(gameObject);
+            // change the sprite to open chest
+            spriteRenderer.sprite = openChestSprite;
+            //Destroy(gameObject);
         }
     }
 

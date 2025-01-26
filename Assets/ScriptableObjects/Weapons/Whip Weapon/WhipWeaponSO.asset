@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 2.5
   speed: 0
   cooldownDuration: 2
-  pierceCount: 0
+  pierceCount: 1
   level: 1
   nextLevelPrefab: {fileID: 0}
   name: Whip

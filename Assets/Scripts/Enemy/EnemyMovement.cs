@@ -13,6 +13,8 @@ public class EnemyMovement : MonoBehaviour
     // Sprite renderer of the enemy
     SpriteRenderer spriteRenderer;
 
+    private bool isMoving = true;
+
     private void Start()
     {
         enemy = GetComponent<EnemyStats>();
@@ -29,7 +31,10 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            MoveTowardsPlayer();
+            if (isMoving)
+            {
+                MoveTowardsPlayer();
+            }
         }
 
     }
@@ -47,6 +52,16 @@ public class EnemyMovement : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
+    }
+
+    public void StopMoving()
+    {
+        isMoving = false;
+    }
+
+    public void ResumeMoving()
+    {
+        isMoving = true;
     }
 
     /// <summary>

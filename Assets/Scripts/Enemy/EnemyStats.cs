@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -16,19 +17,19 @@ public class EnemyStats : MonoBehaviour
     public float currentDamage;
 
     public float despawnDistance = 20f;
-    Transform player;
+    protected Transform player;
 
     [Header("Damage Feedback")]
     public Color damageColor = new Color(1, 0, 0, 1); // Color of the damage feedback
     public float damageFlashDuration = 0.1f; // Duration of the damage feedback
     public float deathFadeTime = 0.5f; // Time taken for the enemy to fade out when killed
     Color originalColor;
-    SpriteRenderer spriteRenderer;
-    EnemyMovement enemyMovement;
-    Animator animator;
+    protected SpriteRenderer spriteRenderer;
+    protected EnemyMovement enemyMovement;
+    protected Animator animator;
 
     private bool isAttacking = false;
-    private void Awake()
+    protected virtual void Awake()
     {
         // Set the current stats to the default stats
         currentDamage = enemyData.Damage;
@@ -36,7 +37,7 @@ public class EnemyStats : MonoBehaviour
         currentSpeed = enemyData.MoveSpeed;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         player = GameObject.FindObjectOfType<PlayerStats>().transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -45,7 +46,7 @@ public class EnemyStats : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if(Vector2.Distance(transform.position, player.position) > despawnDistance)
         {
@@ -161,7 +162,7 @@ public class EnemyStats : MonoBehaviour
     /// <summary>
     /// Return the enemy to a random spawn position when the player is too far away
     /// </summary>
-    void ReturnEnemy()
+    protected void ReturnEnemy()
     {
         EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
         transform.position = player.position + enemySpawner.spawnPositions[Random.Range(0, enemySpawner.spawnPositions.Count)].position;

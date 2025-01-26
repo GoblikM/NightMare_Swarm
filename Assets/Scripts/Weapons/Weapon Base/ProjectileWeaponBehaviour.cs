@@ -96,7 +96,10 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         {
             EnemyStats enemy = collider.GetComponent<EnemyStats>();
             enemy.TakeDamage(GetCurrentDamage(), transform.position);
-            ReducePierce();
+            if (weaponData.Name != "Whip")
+            {
+                ReducePierce();
+            }
         }
         // Check if the projectile hits a breakable object
         else if (collider.CompareTag("Breakable"))
@@ -105,7 +108,10 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
             {
                 // Damage the breakable object
                 breakable.TakeDamage(GetCurrentDamage());
-                ReducePierce();
+                if(weaponData.Name != "Whip")
+                {
+                    ReducePierce();
+                }
             }
         }
     }

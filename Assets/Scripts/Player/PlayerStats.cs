@@ -273,9 +273,9 @@ public class PlayerStats : MonoBehaviour
         levelText.text = "LVL " + level.ToString();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, string dmgType = "Melee")
     {
-        if(!isInvincible)
+        if(!isInvincible || dmgType=="Projectile")
         {
             CurrentHealth -= damage;
             SoundFXManager.instance.PlaySoundFX(playerHurtSounds[Random.Range(0, playerHurtSounds.Length)], transform, 1f);
