@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 341307152418571336}
   - component: {fileID: 9072445650396102564}
   - component: {fileID: 3956461165820818593}
+  - component: {fileID: 354280136984074069}
   m_Layer: 6
   m_Name: TX Plant_1
   m_TagString: Untagged
@@ -93,7 +94,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9061565928443730871}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -143,3 +144,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1cd0009058dc7418bd23eb3f82deb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!68 &354280136984074069
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9061565928443730871}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.0016857386, y: -1.8928291}
+  - {x: -0.130288, y: -1.8892853}
+  - {x: -0.2385306, y: -1.7924714}
+  - {x: -0.21599044, y: -0.98574334}
+  - {x: -1.4328992, y: -0.37178108}
+  - {x: -1.305834, y: 0.8606156}
+  - {x: 1.2892628, y: 0.80898327}
+  - {x: 1.3099626, y: -0.22386107}
+  - {x: 0.2576587, y: -0.7358823}
+  - {x: 0.14973153, y: -0.94017243}
+  - {x: 0.108266234, y: -1.1275431}
+  - {x: 0.09945002, y: -1.790282}
+  - {x: -0.0031659529, y: -1.889935}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
