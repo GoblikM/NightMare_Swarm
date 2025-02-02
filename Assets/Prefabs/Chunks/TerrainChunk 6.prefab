@@ -4421,7 +4421,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4732,7 +4732,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4883,6 +4883,8 @@ MonoBehaviour:
   - {fileID: 8948670250942694929}
   propPrefabs:
   - {fileID: 1084589362241437341, guid: b6765e8771178bf4297f8be840e63aee, type: 3}
+  - {fileID: 6338421448501133953, guid: a72f8df2d95348446b273ddb71f23875, type: 3}
+  - {fileID: 3003034935971990402, guid: 5c551f7e76e95fe4487561878d09d8f5, type: 3}
 --- !u!61 &2340184873225999212
 BoxCollider2D:
   m_ObjectHideFlags: 0

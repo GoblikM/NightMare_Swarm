@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     // Sprite renderer of the enemy
     SpriteRenderer spriteRenderer;
 
+
     private bool isMoving = true;
 
     private void Start()
@@ -20,6 +22,7 @@ public class EnemyMovement : MonoBehaviour
         enemy = GetComponent<EnemyStats>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
+  
     }
 
     private void Update()
@@ -47,10 +50,12 @@ public class EnemyMovement : MonoBehaviour
         if(transform.position.x < player.position.x)
         {
             spriteRenderer.flipX = false;
+
         }
         else
         {
-            spriteRenderer.flipX = true;
+           spriteRenderer.flipX = true;
+
         }
     }
 
