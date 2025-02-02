@@ -16,7 +16,7 @@ MonoBehaviour:
   icon: {fileID: 1036575374, guid: 5307f68ef521f4f4c811fbf33e69a325, type: 3}
   name: Whip
   defaultWeapon: {fileID: 1441512900164795850, guid: 0ae32ad1fda2899458bfb122501510c4, type: 3}
-  maxHealth: 100
+  maxHealth: 1000
   moveSpeed: 5
   recovery: 1
   might: 1

@@ -1402,6 +1402,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1725812234642258239, guid: d1efb05c5c6b3d2479027edcf73f112d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725812234642258239, guid: d1efb05c5c6b3d2479027edcf73f112d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.44
+      objectReference: {fileID: 0}
     - target: {fileID: 1824657139276730860, guid: d1efb05c5c6b3d2479027edcf73f112d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5934,7 +5942,7 @@ MonoBehaviour:
   levelRanges:
   - startLevel: 0
     endLevel: 1
-    experienceCapIncrease: 0
+    experienceCapIncrease: 20
   - startLevel: 1
     endLevel: 3
     experienceCapIncrease: 100
@@ -15669,6 +15677,10 @@ PrefabInstance:
     - target: {fileID: 6338421448501133953, guid: a72f8df2d95348446b273ddb71f23875, type: 3}
       propertyPath: m_Name
       value: Lamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338421448501133953, guid: a72f8df2d95348446b273ddb71f23875, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
