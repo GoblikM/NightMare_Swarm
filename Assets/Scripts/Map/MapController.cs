@@ -30,34 +30,33 @@ public class MapController : MonoBehaviour
         ChunkOptimization();
     }
 
+    private Dictionary<string, string[]> directionsToSpawn = new Dictionary<string, string[]>()
+{
+    { "Right", new string[] { "Right", "UpRight", "DownRight" } },
+    { "Left",  new string[] { "Left", "UpLeft", "DownLeft" } },
+    { "Up",    new string[] { "Up", "UpRight", "UpLeft" } },
+    { "Down",  new string[] { "Down", "DownRight", "DownLeft" } },
+    { "UpRight",  new string[] { "UpRight", "Up", "Right" } },
+    { "UpLeft",   new string[] { "UpLeft", "Up", "Left" } },
+    { "DownRight",new string[] { "DownRight", "Down", "Right" } },
+    { "DownLeft", new string[] { "DownLeft", "Down", "Left" } },
+};
+
     void ChunkChecker()
     {
-        if (!currentChunk)
-        {
-            return;
-        }
+        if (!currentChunk) return;
 
         Vector3 moveDir = player.transform.position - playerLastPosition;
         playerLastPosition = player.transform.position;
-
         string directionName = GetDirectionName(moveDir);
 
-        CheckAndSpawnChunk(directionName);
-        if (directionName.Contains("Up"))
+        if (directionsToSpawn.TryGetValue(directionName, out var neighbors))
         {
-            CheckAndSpawnChunk("Up");
-        }
-        else if (directionName.Contains("Down"))
-        {
-            CheckAndSpawnChunk("Down");
-        }
-        else if (directionName.Contains("Left"))
-        {
-            CheckAndSpawnChunk("Left");
-        }
-        else if (directionName.Contains("Right"))
-        {
-            CheckAndSpawnChunk("Right");
+            // neighbors je napø. {"Right", "UpRight", "DownRight"}
+            foreach (var neighbor in neighbors)
+            {
+                CheckAndSpawnChunk(neighbor);
+            }
         }
     }
 

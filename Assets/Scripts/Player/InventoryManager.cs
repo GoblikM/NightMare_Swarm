@@ -103,7 +103,7 @@ public class InventoryManager : MonoBehaviour
             }
 
             // Instantiate the next level weapon
-            GameObject nextLevelWeapon = Instantiate(weapon.weaponData.NextLevelPrefab, transform.position, Quaternion.identity);
+            GameObject nextLevelWeapon = Instantiate(weapon.weaponData.NextLevelPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             // Set the parent to the player
             nextLevelWeapon.transform.SetParent(transform);
             // Add the weapon to the inventory

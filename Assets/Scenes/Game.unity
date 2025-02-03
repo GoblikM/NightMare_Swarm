@@ -1466,6 +1466,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2340184873225999212, guid: d1efb05c5c6b3d2479027edcf73f112d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7025639355099682082, guid: d1efb05c5c6b3d2479027edcf73f112d, type: 3}
       propertyPath: m_Name
       value: TerrainChunk 4
@@ -1649,6 +1653,15 @@ MonoBehaviour:
       enemyCount: 10
       spawnedCount: 0
       enemyPrefab: {fileID: 5898094566929483402, guid: b7b3b7159fe7f124c875489d89a5a40d, type: 3}
+    waveQuota: 0
+    spawnInterval: 5
+    allSpawnedEnemiesCount: 0
+  - name: Wave 2
+    enemyGroups:
+    - enemyName: Red Bat
+      enemyCount: 10
+      spawnedCount: 0
+      enemyPrefab: {fileID: 8972377595951973060, guid: e38d8b180349d8c4e83c8c977b0faab4, type: 3}
     waveQuota: 0
     spawnInterval: 5
     allSpawnedEnemiesCount: 0
@@ -8660,11 +8673,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2648616055185919402, guid: b6765e8771178bf4297f8be840e63aee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.54
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2648616055185919402, guid: b6765e8771178bf4297f8be840e63aee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.15
+      value: -2.71
       objectReference: {fileID: 0}
     - target: {fileID: 2648616055185919402, guid: b6765e8771178bf4297f8be840e63aee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15656,11 +15669,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1197832470958008742, guid: a72f8df2d95348446b273ddb71f23875, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.46
+      value: -3.51
       objectReference: {fileID: 0}
     - target: {fileID: 1197832470958008742, guid: a72f8df2d95348446b273ddb71f23875, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.05
+      value: 2.88
       objectReference: {fileID: 0}
     - target: {fileID: 1197832470958008742, guid: a72f8df2d95348446b273ddb71f23875, type: 3}
       propertyPath: m_LocalPosition.z
