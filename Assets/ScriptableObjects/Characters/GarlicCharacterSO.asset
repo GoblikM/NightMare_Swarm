@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animatorController: {fileID: 22100000, guid: 4675b9ee6f393fd4792091b00b649461, type: 2}
   icon: {fileID: 1563148842, guid: 33f4cf452dbf73d41b31927c66dae027, type: 3}
-  name: Garlic Character
+  name: Baldric the Guardian
   defaultWeapon: {fileID: 5617147560966605262, guid: 22f773a87049d6e42815f4fce5204553, type: 3}
-  maxHealth: 1000
-  moveSpeed: 5
+  maxHealth: 100
+  moveSpeed: 3.7
   recovery: 1
   might: 1
   projectileSpeed: 0

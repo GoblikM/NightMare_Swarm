@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0976fd64a7c584442b170e0f6d57d0fa, type: 3}
   m_Name: AngryEyeEnemySO
   m_EditorClassIdentifier: 
+  enemyType: 2
   moveSpeed: 1.5
   maxHealth: 30
-  damage: 40
+  damage: 20
   attackRange: 7

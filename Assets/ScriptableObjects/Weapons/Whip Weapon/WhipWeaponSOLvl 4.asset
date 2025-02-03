@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b868844fac3040e4fb38eb7533b4da21, type: 3}
-  m_Name: WhipWeaponSO Lvl 4
+  m_Name: WhipWeaponSOLvl 4
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 6094918474455332506, guid: 322b245cc050a42478b4983753d071e7, type: 3}
+  weaponPrefab: {fileID: 6094918474455332506, guid: cbfcb5ca5d7b5dd489834e3813abe41f, type: 3}
   damage: 10
   speed: 0
   cooldownDuration: 0.5
   pierceCount: 1
   numberOfProjectiles: 2
-  level: 1
+  level: 4
   nextLevelPrefab: {fileID: 0}
-  name: Whip
+  name: Whip Level 4
   description: Damage +3, Cooldown -0.5s. A second whip appears behind the player
     for dual attacks.
   icon: {fileID: 345633657, guid: 1a22e2af58d565c438234bbfc4bb5dd2, type: 3}

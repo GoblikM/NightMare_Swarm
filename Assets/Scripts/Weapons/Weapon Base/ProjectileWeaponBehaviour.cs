@@ -38,7 +38,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
     /// </summary>
     public float GetCurrentDamage()
     {
-        return currentDamage *= FindObjectOfType<PlayerStats>().CurrentMight;
+        return currentDamage * FindObjectOfType<PlayerStats>().CurrentMight;
     }
 
     public void DirectionChecker(Vector3 direction)

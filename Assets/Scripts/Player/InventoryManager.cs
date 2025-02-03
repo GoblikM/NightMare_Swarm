@@ -161,6 +161,11 @@ public class InventoryManager : MonoBehaviour
 
         foreach (var upgradeOption in upgradeUIOptions)
         {
+            if(!upgradeOption.upgradeButton)
+            {
+                GameManager.instance.EndLevelUp();
+            }
+
             if (availableWeaponUpgrades.Count == 0 && availablePassiveItemUpgrades.Count == 0)
             {
                 return;

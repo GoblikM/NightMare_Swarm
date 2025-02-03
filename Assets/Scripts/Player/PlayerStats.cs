@@ -197,12 +197,13 @@ public class PlayerStats : MonoBehaviour
         experienceCap = levelRanges[0].experienceCapIncrease;
 
         // Set the current stats display in the UI
-        GameManager.instance.currentHealthText.text = "Health: " + CurrentHealth.ToString();
+        GameManager.instance.currentHealthText.text = "Health: " + int.Parse(CurrentHealth.ToString()).ToString();
         GameManager.instance.currentRecoveryText.text = "Recovery: " + CurrentRecovery.ToString();
         GameManager.instance.currentMoveSpeedText.text = "Move Speed: " + CurrentMoveSpeed.ToString();
         GameManager.instance.currentMightText.text = "Might: " + CurrentMight.ToString();
         GameManager.instance.currentProjectileSpeedText.text = "Projectile Speed: " + CurrentProjectileSpeed.ToString();
         GameManager.instance.currentPickUpRangeText.text = "Pick Up Range: " + CurrentPickUpRange.ToString();
+        GameManager.instance.enemiesKilled.text = "Enemies Killed: 0";
 
         GameManager.instance.AssignChosenCharacterUI(characterData);
 
@@ -287,9 +288,9 @@ public class PlayerStats : MonoBehaviour
 
             invincibilityTimer = invincibilityDuration;
             isInvincible = true;
-            Debug.Log("Player took damage");
             if (CurrentHealth <= 0)
             {
+                Debug.Log("PLAYER DIED!");
                 Die();
             }
             

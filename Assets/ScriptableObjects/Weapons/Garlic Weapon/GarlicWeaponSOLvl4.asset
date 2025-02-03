@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b868844fac3040e4fb38eb7533b4da21, type: 3}
   m_Name: GarlicWeaponSOLvl4
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 3458183996859970548, guid: e83fb437797af1f43835ed8c862a50bf, type: 3}
+  weaponPrefab: {fileID: 3458183996859970548, guid: 77ddeef760616e04a8947c6a2b7c6db4, type: 3}
   damage: 12
   speed: 0
-  cooldownDuration: 1.5
+  cooldownDuration: 3
   pierceCount: 0
   numberOfProjectiles: 0
-  level: 2
+  level: 4
   nextLevelPrefab: {fileID: 0}
-  name: Garlic Level 3
-  description: Damage +4, Cooldown -0.5s. Unleashes a potent aura with minimal downtime.
+  name: Garlic Level 4
+  description: Damage +4, Cooldown -1s. Unleashes a potent aura with minimal downtime.
   icon: {fileID: 137760408, guid: b4c45a9947517094bbb1986d55fe4542, type: 3}
   evolvedUpgradeToRemove: 0

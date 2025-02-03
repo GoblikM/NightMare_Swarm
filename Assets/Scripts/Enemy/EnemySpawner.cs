@@ -34,24 +34,29 @@ public class EnemySpawner : MonoBehaviour
     public bool maxEnemiesReached = false; // Check if the maximum number of enemies has been reached
     public float waveInterval; // Time between each wave
     bool isWaveActive = false;
+    public int totalEnemiesKilled = 0;
 
     [Header("Spawn Positions")]
     public List<Transform> spawnPositions; // List of spawn positions
 
     Transform player;
 
+    
+
     void Start()
     {
         player = GameObject.FindObjectOfType<PlayerStats>().transform;
         CalculateWaveQuota();
-
     }
 
     void Update()
     {
+
         // Check if the current wave has ended and start the next wave
-        if (currentWaveCount < waves.Count && waves[currentWaveCount].allSpawnedEnemiesCount == 0 && !isWaveActive) // Check if the current wave has ended and next wave should start
+        if (currentWaveCount < waves.Count && enemiesAlive == 0 && waves[currentWaveCount].allSpawnedEnemiesCount >= waves[currentWaveCount].waveQuota && !isWaveActive)
         {
+            Debug.Log("Starting next wave...");
+
             StartCoroutine(StartNextWave());
         }
 
@@ -64,6 +69,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemies();
         }
     }
+
 
     IEnumerator StartNextWave()
     {
@@ -133,6 +139,8 @@ public class EnemySpawner : MonoBehaviour
     {
         // Decrement the number of enemies alive
         enemiesAlive--;
+        totalEnemiesKilled++;
+        GameManager.instance.enemiesKilled.text = "Enemies Killed: " + totalEnemiesKilled;
 
         // Reset the maxEnemiesReached flag when the number of enemies alive is less than the maximum allowed
         if (enemiesAlive < maxEnemiesAllowed)

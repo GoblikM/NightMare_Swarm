@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b868844fac3040e4fb38eb7533b4da21, type: 3}
-  m_Name: WhipWeaponSO Lvl 3
+  m_Name: WhipWeaponSOLvl 2
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 6094918474455332506, guid: 322b245cc050a42478b4983753d071e7, type: 3}
-  damage: 7
+  weaponPrefab: {fileID: 6094918474455332506, guid: 89b8ee3c69ce38945a5636cb39b4efb9, type: 3}
+  damage: 5
   speed: 0
-  cooldownDuration: 1
+  cooldownDuration: 1.5
   pierceCount: 1
   numberOfProjectiles: 1
-  level: 1
-  nextLevelPrefab: {fileID: 1441512900164795850, guid: 6d0d3d36d77affe4096a473c38438499, type: 3}
-  name: Damage +2, Cooldown -0.5s. An enhanced lash for quick successive strikes.
-  description: 
+  level: 2
+  nextLevelPrefab: {fileID: 1441512900164795850, guid: bea96fc329de6304f9921ae1e104e6ee, type: 3}
+  name: Whip Level 2
+  description: Damage +2, Cooldown -0.5s. The whip snaps with greater force.
   icon: {fileID: 345633657, guid: 1a22e2af58d565c438234bbfc4bb5dd2, type: 3}
   evolvedUpgradeToRemove: 0

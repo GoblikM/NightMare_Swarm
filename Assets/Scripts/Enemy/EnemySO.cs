@@ -2,9 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    Skeleton,
+    Bat,
+    Other
+}
+
 [CreateAssetMenu(fileName = "EnemySO", menuName = "ScriptableObjects/Enemy")]
 public class EnemySO : ScriptableObject
 {
+
+    [SerializeField]
+    private EnemyType enemyType;
+    public EnemyType EnemyType { get => enemyType; private set => enemyType = value; }
     // Base stats for the enemy
     [SerializeField]
     private float moveSpeed;

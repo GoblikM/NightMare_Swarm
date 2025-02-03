@@ -59,11 +59,12 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(float damage, Vector2 sourcePosition, float knockbackForce = 5f, float knockbackDuration = 0.2f)
     {
         currentHealth -= damage;
+        Debug.Log($"Enemy took {damage} damage. Current health: {currentHealth}");
         StartCoroutine(DamageFlash()); // Flash the enemy sprite when it takes damage
 
         if(damage > 0)
         {
-            GameManager.GenerateFloatingText(Mathf.FloorToInt(damage).ToString(), transform);
+            GameManager.GenerateFloatingText(damage.ToString("F2"), transform);
         }
 
         if (knockbackForce > 0)
@@ -117,10 +118,21 @@ public class EnemyStats : MonoBehaviour
 
     public void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && isAttacking)
+        if (collision.gameObject.CompareTag("Player"))
         {
             PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
-            player.TakeDamage(currentDamage);
+
+            if (enemyData.EnemyType == EnemyType.Skeleton)
+            {
+                if (isAttacking)
+                {
+                    player.TakeDamage(currentDamage);
+                }       
+            }
+            else if (enemyData.EnemyType == EnemyType.Bat)
+            {        
+                player.TakeDamage(currentDamage);
+            }
         }
     }
 

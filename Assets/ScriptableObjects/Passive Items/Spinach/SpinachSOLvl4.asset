@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181b1a3bea533cf4b967ef71a212b95c, type: 3}
   m_Name: SpinachSOLvl4
   m_EditorClassIdentifier: 
-  multiplier: 20
+  multiplier: 1.5
   level: 4
   nextLevelPrefab: {fileID: 0}
-  name: Spinach Level 2
-  description: Maximizes Might with a 20% increase, crushing enemies effortlessly.
+  name: Spinach Level 4
+  description: Greatly enhances attack power by 50%!
   icon: {fileID: -880915634, guid: 1bda1b34ab4ff354887c133bf90bc9bc, type: 3}

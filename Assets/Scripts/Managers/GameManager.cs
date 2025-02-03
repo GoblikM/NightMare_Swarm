@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text currentMightText;
     public TMP_Text currentProjectileSpeedText;
     public TMP_Text currentPickUpRangeText;
+    public TMP_Text enemiesKilled;
 
     [Header("Results Screen Text")]
     public Image chosenCharacterImage;
@@ -100,7 +101,7 @@ public class GameManager : MonoBehaviour
                     Time.timeScale = 0f; // Stop the game
                     Debug.Log("Game Over");
                     DisplayResults();
-                    MusicManager.instance.PlayMusic(instance.resultsScreen.GetComponent<AudioSource>().clip);
+                    MusicManager.instance.PlayMusic(instance.resultsScreen.GetComponent<AudioSource>().clip, 0.7f);
                 }
                 break;
             case GameState.LevelUp:
@@ -274,6 +275,12 @@ public class GameManager : MonoBehaviour
 
     public void StartLevelUp()
     {
+        if(InventoryIsFullyUpgraded())
+        {
+            Debug.Log("Inventory is fully upgraded");
+            return;
+        }
+
         ChangeState(GameState.LevelUp);
         playerObject.SendMessage("RemoveAndApplyUpgrades");
     }
@@ -346,4 +353,32 @@ public class GameManager : MonoBehaviour
             text, target, duration, speed
             ));
     }
+
+
+
+    private bool InventoryIsFullyUpgraded()
+    {
+        InventoryManager inventory = playerObject.GetComponent<InventoryManager>();
+
+        // Zkontrolujeme všechny zbranì
+        foreach (var weapon in inventory.weaponSlots)
+        {
+            if (weapon != null && weapon.weaponData.NextLevelPrefab != null)
+            {
+                return false; // Pokud existuje alespoò jedna zbraò, která mùže být vylepšena, vrátíme false
+            }
+        }
+
+        // Zkontrolujeme všechny pasivní pøedmìty
+        foreach (var passiveItem in inventory.passiveItemSlots)
+        {
+            if (passiveItem != null && passiveItem.passiveItemData.NextLevelPrefab != null)
+            {
+                return false; // Pokud existuje alespoò jeden pasivní pøedmìt, který mùže být vylepšen, vrátíme false
+            }
+        }
+
+        return true; // Pokud jsme nenašli žádné možnosti vylepšení, vrátíme true
+    }
+
 }

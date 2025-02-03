@@ -29,7 +29,7 @@ public class MeleeWeaponBehaviour : MonoBehaviour
 
     public float GetCurrentDamage()
     {
-        return currentDamage *= FindObjectOfType<PlayerStats>().CurrentMight;
+        return currentDamage * FindObjectOfType<PlayerStats>().CurrentMight;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collider)

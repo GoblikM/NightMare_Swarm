@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1878055751
   m_SortingLayer: 4
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_Sprite: {fileID: 35480100, guid: 42b9f20c292883148a425bb3c35ea938, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -154,11 +154,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721273822577818060}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 50
+  m_Mass: 500
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
   deathFadeTime: 0.5
   projectilePrefab: {fileID: 818551379837938700, guid: d576aa519e5f0ce4fbbd6ba524a6dfbf, type: 3}
   attackCooldown: 2
-  projectileSpeed: 10
+  projectileSpeed: 6
 --- !u!1 &5971818920639076757
 GameObject:
   m_ObjectHideFlags: 0

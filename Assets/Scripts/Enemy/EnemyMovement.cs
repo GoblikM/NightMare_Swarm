@@ -49,13 +49,12 @@ public class EnemyMovement : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, player.position, enemy.currentSpeed * Time.deltaTime);
         if(transform.position.x < player.position.x)
         {
-            spriteRenderer.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
 
         }
         else
         {
-           spriteRenderer.flipX = true;
-
+           transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 

@@ -7,18 +7,18 @@ public class DayNightCycle : MonoBehaviour
 {
     [SerializeField] private Light2D globalLight;
 
-    [SerializeField] private float dayDuration = 300f;
+    [SerializeField] private float nightDuration = 600f;
 
     [Header("Light Intensity")]
-    [SerializeField] private float nightIntensity = 0.2f;
+    [SerializeField] private float nightIntensity = 0.1f;
     [SerializeField] private float dayIntensity = 1f;
   
     [Header("Light Color")]
     // this is the night color - 3165FF
-    [SerializeField] private Color nightColor = new Color(0.1921569f, 0.3960785f, 1f, 1f);
+    [SerializeField] private Color nightColor;
 
     // this is the day color - FFFFFF
-    [SerializeField] private Color dayColor = new Color(1f, 1f, 1f, 1f);
+    [SerializeField] private Color dayColor;
 
     private float startTime;
 
@@ -28,6 +28,7 @@ public class DayNightCycle : MonoBehaviour
     {
         startTime = Time.time;
         globalLight.intensity = nightIntensity;
+        globalLight.color = nightColor;
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class DayNightCycle : MonoBehaviour
     {
         float elapsedTime = Time.time - startTime;
 
-        float t = Mathf.Clamp01(elapsedTime / dayDuration);
+        float t = Mathf.Clamp01(elapsedTime / nightDuration);
 
         float currentIntensity = Mathf.Lerp(nightIntensity, dayIntensity, t);
         globalLight.intensity = currentIntensity;
