@@ -238,5 +238,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseIntensity: 3.4
-  flickerStrength: 2.5
+  flickerStrength: 3.5
   flickerSpeed: 4

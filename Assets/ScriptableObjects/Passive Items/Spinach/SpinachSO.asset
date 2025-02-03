@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181b1a3bea533cf4b967ef71a212b95c, type: 3}
   m_Name: SpinachSO
   m_EditorClassIdentifier: 
-  multiplier: 100
+  multiplier: 5
   level: 1
   nextLevelPrefab: {fileID: 4425556946280428865, guid: 08272e5d2a027344595b782f1be8546c, type: 3}
   name: Spinach
-  description: Increases Might by 100%.
+  description: Slightly increases Might by 5%.
   icon: {fileID: -880915634, guid: 1bda1b34ab4ff354887c133bf90bc9bc, type: 3}

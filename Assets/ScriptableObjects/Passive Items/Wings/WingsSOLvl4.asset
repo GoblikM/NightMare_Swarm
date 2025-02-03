@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 181b1a3bea533cf4b967ef71a212b95c, type: 3}
-  m_Name: WingsSOLvl2
+  m_Name: WingsSOLvl4
   m_EditorClassIdentifier: 
-  multiplier: 4
-  level: 2
-  nextLevelPrefab: {fileID: 8707263126142484323, guid: 2d3c510e4aaf34f4ea1fcc9a881496af, type: 3}
+  multiplier: 8
+  level: 4
+  nextLevelPrefab: {fileID: 0}
   name: Wings Level 2
-  description: Boosts movement speed by 4%, making travel faster.
+  description: Maximizes movement speed with an 8% increase, allowing swift movement.
   icon: {fileID: 331760785, guid: fc3994312cb13e144998df6236d3acac, type: 3}

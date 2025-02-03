@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 181b1a3bea533cf4b967ef71a212b95c, type: 3}
-  m_Name: WingsSOLvl2
+  m_Name: SpinachSOLvl3
   m_EditorClassIdentifier: 
-  multiplier: 4
-  level: 2
-  nextLevelPrefab: {fileID: 8707263126142484323, guid: 2d3c510e4aaf34f4ea1fcc9a881496af, type: 3}
-  name: Wings Level 2
-  description: Boosts movement speed by 4%, making travel faster.
-  icon: {fileID: 331760785, guid: fc3994312cb13e144998df6236d3acac, type: 3}
+  multiplier: 15
+  level: 3
+  nextLevelPrefab: {fileID: 4425556946280428865, guid: c186ca3a965bd114b80fcdf98d270dfa, type: 3}
+  name: Spinach Level 2
+  description: Enhances Might by 15%, dealing even more damage.
+  icon: {fileID: -880915634, guid: 1bda1b34ab4ff354887c133bf90bc9bc, type: 3}

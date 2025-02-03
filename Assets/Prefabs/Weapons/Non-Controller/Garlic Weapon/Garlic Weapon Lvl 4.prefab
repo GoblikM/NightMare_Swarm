@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseIntensity: 3.4
-  flickerStrength: 2.5
+  flickerStrength: 5
   flickerSpeed: 4
 --- !u!1 &3458183996859970548
 GameObject:
