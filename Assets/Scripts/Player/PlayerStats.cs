@@ -345,8 +345,7 @@ public class PlayerStats : MonoBehaviour
             Debug.Log("Cannot add more weapons");
             return;
         }
-
-        GameObject spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
+        GameObject spawnedWeapon = Instantiate(weapon, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         spawnedWeapon.transform.SetParent(transform);
         // Add the weapon to the inventory
         inventory.AddWeapon(weaponSlotIndex, spawnedWeapon.GetComponent<WeaponController>());

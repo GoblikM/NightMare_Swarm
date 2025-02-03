@@ -591,11 +591,23 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1217136821424623105, guid: 0da436c4f9166754fa95b310756b48a0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217136821424623105, guid: 0da436c4f9166754fa95b310756b48a0, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2619129301547712295, guid: 0da436c4f9166754fa95b310756b48a0, type: 3}
       propertyPath: m_Name
       value: TX Plant_0 1
       objectReference: {fileID: 0}
     - target: {fileID: 3652336485100476584, guid: 0da436c4f9166754fa95b310756b48a0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555555782341516169, guid: 0da436c4f9166754fa95b310756b48a0, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -637,6 +649,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7487540849990998038, guid: 0da436c4f9166754fa95b310756b48a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666743291970966828, guid: 0da436c4f9166754fa95b310756b48a0, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -1617,7 +1633,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199084922}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb8c5de847118f54981e6f4b0d3e8367, type: 3}
   m_Name: 
@@ -2283,6 +2299,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 341307152418571336, guid: cc49d5429b103694eab7e31b915768ca, type: 3}
       propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 341307152418571336, guid: cc49d5429b103694eab7e31b915768ca, type: 3}
+      propertyPath: m_RenderingLayerMask
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1856576976529707393, guid: cc49d5429b103694eab7e31b915768ca, type: 3}
@@ -3852,7 +3872,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.26453722}
+  m_Offset: {x: 0, y: 0.7574096}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3863,7 +3883,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.47092557}
+  m_Size: {x: 1, y: 0.44574475}
   m_EdgeRadius: 0
 --- !u!1 &504135381
 GameObject:
@@ -4841,7 +4861,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1878055751
   m_SortingLayer: 4
-  m_SortingOrder: 20
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1938997974, guid: c20577d35c101ea4482806ba8f1898ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4852,7 +4872,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &587589661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6065,7 +6085,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01481697, y: -0.00462234}
+  m_Offset: {x: -0.01481697, y: 1.03}
   m_Size: {x: 0.70743805, y: 2.103289}
   m_Direction: 0
 --- !u!50 &759449762
@@ -7288,7 +7308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1.6}
+  m_AnchoredPosition: {x: 0, y: -0.55}
   m_SizeDelta: {x: 6, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &971737552
@@ -8321,7 +8341,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1}
   serializedVersion: 2
   m_Radius: 0.5
 --- !u!1 &1161407526
