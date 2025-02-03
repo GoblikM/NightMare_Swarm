@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4568692040305632243}
   - component: {fileID: 2236755239495237465}
   m_Layer: 0
-  m_Name: Whip Projectile
+  m_Name: Whip Weapon Lvl 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4983,5 +4983,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436d48b96062587408be5cb26aa5a74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: b6ba1ed19993f3e44b0c2624fb5d9b7c, type: 2}
+  weaponData: {fileID: 11400000, guid: 06b13d637f2653843bd09fea130c4145, type: 2}
   destroyAfterSeconds: 0.21

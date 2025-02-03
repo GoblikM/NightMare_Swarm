@@ -1629,7 +1629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &199084923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1654,7 +1654,7 @@ MonoBehaviour:
       spawnedCount: 0
       enemyPrefab: {fileID: 5898094566929483402, guid: b7b3b7159fe7f124c875489d89a5a40d, type: 3}
     waveQuota: 0
-    spawnInterval: 5
+    spawnInterval: 1
     allSpawnedEnemiesCount: 0
   - name: Wave 2
     enemyGroups:
@@ -1663,11 +1663,11 @@ MonoBehaviour:
       spawnedCount: 0
       enemyPrefab: {fileID: 8972377595951973060, guid: e38d8b180349d8c4e83c8c977b0faab4, type: 3}
     waveQuota: 0
-    spawnInterval: 5
+    spawnInterval: 1
     allSpawnedEnemiesCount: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
+  maxEnemiesAllowed: 50
   maxEnemiesReached: 0
   waveInterval: 5
   spawnPositions:

@@ -24,6 +24,10 @@ public class WeaponSO : ScriptableObject
     public int PierceCount { get => pierceCount; private set => pierceCount = value; }
 
     [SerializeField]
+    private int numberOfProjectiles;
+    public int NumberOfProjectiles { get => numberOfProjectiles; private set => numberOfProjectiles = value; }
+
+    [SerializeField]
     private int level;
     public int Level { get => level; private set => level = value; }
 

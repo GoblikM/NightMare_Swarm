@@ -13,17 +13,37 @@ public class WhipController : WeaponController
     {
         base.Attack();
 
-        // Urèete offset pozice
-        Vector3 offset = new Vector3(2f, 0f, 0f); // Napøíklad 1.5 jednotky doprava
-        if (playerMovement.GetPlayerLastMoveDirNormalized().x < 0)
+        if (weaponData.NumberOfProjectiles == 1)
         {
-            offset.x = -offset.x; // Pokud hráè kouká doleva, posuneme biè doleva
+            // Pokud je jen jeden projektil, použijeme smìr hráèe.
+            CreateWhip(playerMovement.GetPlayerLastMoveDirNormalized());
+        }
+        else if (weaponData.NumberOfProjectiles == 2)
+        {
+            // Pokud jsou 2, vytvoøíme jeden whip ve smìru hráèe...
+            CreateWhip(playerMovement.GetPlayerLastMoveDirNormalized());
+            // ... a druhý whip s opaèným smìrem.
+            CreateWhip(-playerMovement.GetPlayerLastMoveDirNormalized());
+        }
+    }
+
+    private void CreateWhip(Vector3 direction)
+    {
+        // Nastavíme offset – whip se objeví pøed hráèem.
+        // Základní offset je 2 jednotky doprava.
+        Vector3 offset = new Vector3(2f, 0f, 0f);
+        // Pokud je pøedaný smìr záporný (hráè smìøuje doleva nebo pro druhý whip),
+        // invertujeme offset, aby se whip objevil na opaèné stranì.
+        if (direction.x < 0)
+        {
+            offset.x = -offset.x;
         }
 
-        // Vytvoøení efektu bièe s offsetem
         GameObject spawnedWhip = Instantiate(weaponData.WeaponPrefab);
         spawnedWhip.transform.position = transform.position + offset;
-        spawnedWhip.GetComponent<WhipBehaviour>().DirectionChecker(playerMovement.GetPlayerLastMoveDirNormalized());
+
+        // Pøedáme pøedaný smìr do metody DirectionChecker, která nastaví orientaci whipu.
+        spawnedWhip.GetComponent<WhipBehaviour>().DirectionChecker(direction);
     }
 
 }
