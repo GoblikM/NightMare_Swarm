@@ -15,6 +15,8 @@ public class MeleeWeaponBehaviour : MonoBehaviour
 
     private void Awake()
     {
+
+
         // Set the current stats to the default stats
         currentDamage = weaponData.Damage;
         currentSpeed = weaponData.Speed;
@@ -27,22 +29,28 @@ public class MeleeWeaponBehaviour : MonoBehaviour
         Destroy(gameObject, destroyAfterSeconds);
     }
 
-    public float GetCurrentDamage()
+    public float CalculateDamage(out bool isCrit)
     {
-        return currentDamage * FindObjectOfType<PlayerStats>().CurrentMight;
+        
+        float baseDamage = currentDamage * PlayerStats.instance.CurrentMight;
+        float critChance = PlayerStats.instance.CurrentCriticalChance;  
+        float critMultiplier = 2.0f;
+
+        isCrit = Random.value < (critChance / 100f);
+        return isCrit ? baseDamage * critMultiplier : baseDamage;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Enemy"))
         {
-            collider.GetComponent<EnemyStats>().TakeDamage(GetCurrentDamage(), transform.position);
+            collider.GetComponent<EnemyStats>().TakeDamage(CalculateDamage(out bool isCrit), transform.position, isCrit);
         }
         else if (collider.CompareTag("Breakable"))
         {
             if(collider.gameObject.TryGetComponent(out BreakableProps breakable))
             {
-                breakable.TakeDamage(GetCurrentDamage());
+                breakable.TakeDamage(CalculateDamage(out bool isCrit), isCrit);
                 
             }
         }

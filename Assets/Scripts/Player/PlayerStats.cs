@@ -6,6 +6,9 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
+
+    public static PlayerStats instance;
+
     private CharacterSO characterData;
 
     [Header("Player Sounds")]
@@ -18,6 +21,7 @@ public class PlayerStats : MonoBehaviour
     float currentMight;
     float currentProjectileSpeed;
     float currentPickUpRange;
+    float currentCriticalChance;
 
     #region Current Stats Properties
     public float CurrentHealth
@@ -132,6 +136,25 @@ public class PlayerStats : MonoBehaviour
             }
         }
     }
+
+    public float CurrentCriticalChance
+    {
+        get { return currentCriticalChance; }
+        set
+        {
+            // check if the value has changed
+            if (currentCriticalChance != value)
+            {
+                currentCriticalChance = value;
+                if(GameManager.instance != null)
+                {
+                    GameManager.instance.currentCriticalChanceText.text = "Critical Chance: " + currentCriticalChance.ToString() + " %";
+                }
+                // Add any additional logic here that needs
+            }
+        }
+    }
+
     #endregion
 
     public ParticleSystem damageEffect;
@@ -171,6 +194,17 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+
         characterData = CharacterSelector.GetCharacterData();
         CharacterSelector.instance.DestroySingleton();
         inventory = GetComponent<InventoryManager>();
@@ -182,6 +216,7 @@ public class PlayerStats : MonoBehaviour
         CurrentMight = characterData.Might;
         CurrentProjectileSpeed = characterData.ProjectileSpeed;
         CurrentPickUpRange = characterData.PickUpRange;
+        CurrentCriticalChance = characterData.CriticalChance;
 
         // Spawn the default weapon
         SpawnWeapon(characterData.DefaultWeapon);
@@ -201,6 +236,7 @@ public class PlayerStats : MonoBehaviour
         GameManager.instance.currentRecoveryText.text = "Recovery: " + CurrentRecovery.ToString();
         GameManager.instance.currentMoveSpeedText.text = "Move Speed: " + CurrentMoveSpeed.ToString();
         GameManager.instance.currentMightText.text = "Might: " + CurrentMight.ToString();
+        GameManager.instance.currentCriticalChanceText.text = "Critical Chance: " + CurrentCriticalChance.ToString() + " %";
         GameManager.instance.currentProjectileSpeedText.text = "Projectile Speed: " + CurrentProjectileSpeed.ToString();
         GameManager.instance.currentPickUpRangeText.text = "Pick Up Range: " + CurrentPickUpRange.ToString();
         GameManager.instance.enemiesKilled.text = "Enemies Killed: 0";

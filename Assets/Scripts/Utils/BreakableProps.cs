@@ -7,7 +7,7 @@ public class BreakableProps : MonoBehaviour
     public float health;
     private float damageFlashDuration = 0.1f;
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool isCrit)
     {
         health -= damage;
         StartCoroutine(DamageFlashProp());

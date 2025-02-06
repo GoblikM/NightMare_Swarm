@@ -20,5 +20,6 @@ MonoBehaviour:
   moveSpeed: 4
   recovery: 1
   might: 1
+  criticalChance: 5
   projectileSpeed: 0
   pickUpRange: 2.5

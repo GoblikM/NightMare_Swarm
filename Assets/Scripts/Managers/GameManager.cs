@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text currentRecoveryText;
     public TMP_Text currentMoveSpeedText;
     public TMP_Text currentMightText;
+    public TMP_Text currentCriticalChanceText;
     public TMP_Text currentProjectileSpeedText;
     public TMP_Text currentPickUpRangeText;
     public TMP_Text enemiesKilled;
@@ -294,7 +295,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    IEnumerator GenerateFloatingTextCoroutine(string text, Transform target, float duration = 1f, float speed = 50f)
+    IEnumerator GenerateFloatingTextCoroutine(string text, Transform target, bool isCrit, float duration = 1f, float speed = 50f)
     {
         GameObject textObject = new GameObject("Floating Text");
         RectTransform rect = textObject.AddComponent<RectTransform>();
@@ -302,8 +303,18 @@ public class GameManager : MonoBehaviour
         textComponent.text = text;
         textComponent.horizontalAlignment = HorizontalAlignmentOptions.Center;
         textComponent.verticalAlignment = VerticalAlignmentOptions.Middle;
-        textComponent.fontSize = textFontSize;
+        if (isCrit)
+        {
+            textComponent.fontSize = textFontSize * 1.5f;
+            textComponent.color = Color.yellow;
+        }
+        else
+        {
+            textComponent.fontSize = textFontSize;
+            textComponent.color = Color.white;
+        }
         if (textFont) textComponent.font = textFont;
+
 
         // Zkontrolujeme existenci targetu
         if (target != null)
@@ -343,14 +354,14 @@ public class GameManager : MonoBehaviour
             Destroy(textObject);
     }
 
-    public static void GenerateFloatingText(string text, Transform target, float duration = 1f, float speed = 1f)
+    public static void GenerateFloatingText(string text, Transform target, bool isCrit, float duration = 1f, float speed = 1f)
     {
         if (!instance.damageTextCanvas) return;
 
         if(!instance.referenceCamera) instance.referenceCamera = Camera.main;
 
         instance.StartCoroutine(instance.GenerateFloatingTextCoroutine(
-            text, target, duration, speed
+            text, target,isCrit, duration, speed
             ));
     }
 

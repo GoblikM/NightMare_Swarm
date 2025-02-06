@@ -54,7 +54,7 @@ public class EnemyStats : MonoBehaviour
         PlayAttackAnimation();
     }
 
-    public void TakeDamage(float damage, Vector2 sourcePosition, float knockbackForce = 5f, float knockbackDuration = 0.2f)
+    public void TakeDamage(float damage, Vector2 sourcePosition, bool isCrit = false, float knockbackForce = 5f, float knockbackDuration = 0.2f)
     {
         currentHealth -= damage;
         Debug.Log($"Enemy took {damage} damage. Current health: {currentHealth}");
@@ -62,7 +62,7 @@ public class EnemyStats : MonoBehaviour
 
         if(damage > 0)
         {
-            GameManager.GenerateFloatingText(damage.ToString("F2"), transform);
+            GameManager.GenerateFloatingText(damage.ToString("F2"), transform, isCrit);
         }
 
         if (knockbackForce > 0)

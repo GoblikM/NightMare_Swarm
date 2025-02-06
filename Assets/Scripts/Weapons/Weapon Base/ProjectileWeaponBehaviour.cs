@@ -33,12 +33,14 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Get the current damage of the weapon after applying the player's might
-    /// </summary>
-    public float GetCurrentDamage()
+    public float CalculateDamage(out bool isCrit)
     {
-        return currentDamage * FindObjectOfType<PlayerStats>().CurrentMight;
+        float baseDamage = currentDamage * PlayerStats.instance.CurrentMight;
+        float critChance = PlayerStats.instance.CurrentCriticalChance;
+        float critMultiplier = 2.0f;
+
+        isCrit = Random.value < (critChance / 100f);
+        return isCrit ? baseDamage * critMultiplier : baseDamage;
     }
 
     public void DirectionChecker(Vector3 direction)
@@ -95,7 +97,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         if (collider.CompareTag("Enemy"))
         {
             EnemyStats enemy = collider.GetComponent<EnemyStats>();
-            enemy.TakeDamage(GetCurrentDamage(), transform.position);
+            enemy.TakeDamage(CalculateDamage(out bool isCrit), transform.position, isCrit);
             if (weaponData.Name != "Whip")
             {
                 ReducePierce();
@@ -107,7 +109,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
             if(collider.gameObject.TryGetComponent(out BreakableProps breakable))
             {
                 // Damage the breakable object
-                breakable.TakeDamage(GetCurrentDamage());
+                breakable.TakeDamage(CalculateDamage(out bool isCrit), isCrit);
                 if(weaponData.Name != "Whip")
                 {
                     ReducePierce();

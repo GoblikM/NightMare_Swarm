@@ -37,6 +37,11 @@ public class CharacterSO : ScriptableObject
     [SerializeField]
     private float might;
     public float Might { get => might; set => might = value; }
+
+    [SerializeField]
+    private float criticalChance;
+    public float CriticalChance { get => criticalChance; set => criticalChance = value; }
+
     [SerializeField]
     private float projectileSpeed;
     public float ProjectileSpeed { get => projectileSpeed; set => projectileSpeed = value; }

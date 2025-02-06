@@ -17,7 +17,7 @@ public class GarlicBehaviour : MeleeWeaponBehaviour
     {
         if(collider.CompareTag("Enemy") && !damagedEnemies.Contains(collider.gameObject))
         {
-            collider.GetComponent<EnemyStats>().TakeDamage(GetCurrentDamage(), transform.position);
+            collider.GetComponent<EnemyStats>().TakeDamage(CalculateDamage(out bool isCrit), transform.position, isCrit);
              // Add the enemy to the list of enemies that have been hit,
             // so that they don't take damage again from the same instance of the garlic
             damagedEnemies.Add(collider.gameObject);
@@ -27,7 +27,7 @@ public class GarlicBehaviour : MeleeWeaponBehaviour
         {
             if (collider.gameObject.TryGetComponent(out BreakableProps breakable) && !damagedEnemies.Contains(collider.gameObject))
             {
-                breakable.TakeDamage(GetCurrentDamage());
+                breakable.TakeDamage(CalculateDamage(out bool isCrit), isCrit);
                 damagedEnemies.Add(collider.gameObject);
             }
         }

@@ -21,6 +21,8 @@ public class CharacterCardUI : MonoBehaviour
     [SerializeField]
     private TMP_Text characterMight;
     [SerializeField]
+    private TMP_Text characterCritChance;
+    [SerializeField]
     private TMP_Text characterProjectileSpeed;
     [SerializeField]
     private TMP_Text characterPickUpRange;
@@ -40,6 +42,7 @@ public class CharacterCardUI : MonoBehaviour
         characterSpeed.text = characterData.MoveSpeed.ToString();
         characterRecovery.text = characterData.Recovery.ToString();
         characterMight.text = characterData.Might.ToString();
+        characterCritChance.text = characterData.CriticalChance.ToString() + " %";
         characterProjectileSpeed.text = characterData.ProjectileSpeed.ToString();
         characterPickUpRange.text = characterData.PickUpRange.ToString();
         characterIcon.sprite = characterData.Icon;
