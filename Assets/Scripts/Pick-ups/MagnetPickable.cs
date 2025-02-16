@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MagnetPickable : Pickable
 {
-    public float expandedPickupRange = 100f; // Velký pickup range
-    public float duration = 2f; // Doba trvání
+    public float expandedPickupRange = 100f; 
+    public float duration = 10f; 
 
     public override void Collect()
     {
         base.Collect();
         ExpandPlayerPickupRange();
-        Destroy(gameObject); // Magnet zmizí po sebrání
+        Destroy(gameObject); 
     }
 
     void ExpandPlayerPickupRange()

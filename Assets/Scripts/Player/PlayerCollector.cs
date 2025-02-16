@@ -34,11 +34,14 @@ public class PlayerCollector : MonoBehaviour
     private IEnumerator ExpandAndResetPickupRange(float expandedRadius, float duration)
     {
         float originalRadius = player.CurrentPickUpRange;
+        float originalSpeed = pullSpeed;
         player.CurrentPickUpRange = expandedRadius;
+        pullSpeed = 1000;
 
         yield return new WaitForSeconds(duration);
 
         player.CurrentPickUpRange = originalRadius;
+        pullSpeed = originalSpeed;
     }
 
 
@@ -61,7 +64,9 @@ public class PlayerCollector : MonoBehaviour
             // Call the Collect method
             collectable.Collect();
         }
+       
     }
     
+
 
 }
