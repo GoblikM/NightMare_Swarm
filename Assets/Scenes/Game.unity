@@ -8443,7 +8443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39471839d49d577458a81c9120d1630a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullSpeed: 300
+  pullSpeed: 500
 --- !u!58 &1156204871
 CircleCollider2D:
   m_ObjectHideFlags: 0

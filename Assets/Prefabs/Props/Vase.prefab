@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6974585347919225822}
   - component: {fileID: 3556603292248863080}
   m_Layer: 6
-  m_Name: TX Props_41
+  m_Name: Vase
   m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b076d9c4559d2f44c96b6ac2bb06ac1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 5
 --- !u!114 &3556603292248863080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,4 +160,10 @@ MonoBehaviour:
   drops:
   - name: Health Potion
     itemPrefab: {fileID: 3459525743246584972, guid: 82c49b191ce50844c85d979f84f15bbc, type: 3}
+    dropRate: 100
+  - name: Magnet
+    itemPrefab: {fileID: 6898661348787079562, guid: 93d4a25c9161a7a4597d4fb615a50f4b, type: 3}
+    dropRate: 100
+  - name: Blue Gem
+    itemPrefab: {fileID: 7083157785162260699, guid: 7ae523a88eecdea48bb55bde88d18e69, type: 3}
     dropRate: 100

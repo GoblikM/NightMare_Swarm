@@ -26,6 +26,22 @@ public class PlayerCollector : MonoBehaviour
     }
 
 
+    public void ExpandPickupRange(float expandedRadius, float duration)
+    {
+        StartCoroutine(ExpandAndResetPickupRange(expandedRadius, duration));
+    }
+
+    private IEnumerator ExpandAndResetPickupRange(float expandedRadius, float duration)
+    {
+        float originalRadius = player.CurrentPickUpRange;
+        player.CurrentPickUpRange = expandedRadius;
+
+        yield return new WaitForSeconds(duration);
+
+        player.CurrentPickUpRange = originalRadius;
+    }
+
+
     /**
      * OnTriggerStay2D is called when a collider stays inside the trigger collider of the player
      */
