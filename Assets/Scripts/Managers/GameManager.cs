@@ -276,12 +276,6 @@ public class GameManager : MonoBehaviour
 
     public void StartLevelUp()
     {
-        if(InventoryIsFullyUpgraded())
-        {
-            Debug.Log("Inventory is fully upgraded");
-            return;
-        }
-
         ChangeState(GameState.LevelUp);
         playerObject.SendMessage("RemoveAndApplyUpgrades");
     }
@@ -365,31 +359,5 @@ public class GameManager : MonoBehaviour
             ));
     }
 
-
-
-    private bool InventoryIsFullyUpgraded()
-    {
-        InventoryManager inventory = playerObject.GetComponent<InventoryManager>();
-
-        // Zkontrolujeme všechny zbranì
-        foreach (var weapon in inventory.weaponSlots)
-        {
-            if (weapon != null && weapon.weaponData.NextLevelPrefab != null)
-            {
-                return false; // Pokud existuje alespoò jedna zbraò, která mùže být vylepšena, vrátíme false
-            }
-        }
-
-        // Zkontrolujeme všechny pasivní pøedmìty
-        foreach (var passiveItem in inventory.passiveItemSlots)
-        {
-            if (passiveItem != null && passiveItem.passiveItemData.NextLevelPrefab != null)
-            {
-                return false; // Pokud existuje alespoò jeden pasivní pøedmìt, který mùže být vylepšen, vrátíme false
-            }
-        }
-
-        return true; // Pokud jsme nenašli žádné možnosti vylepšení, vrátíme true
-    }
 
 }
