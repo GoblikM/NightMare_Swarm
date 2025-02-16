@@ -36,6 +36,10 @@ public class EnemySpawner : MonoBehaviour
     bool isWaveActive = false;
     public int totalEnemiesKilled = 0;
 
+    [Header("Wave Timer")]
+    public float waveTimeLimit = 60f; // Time limit for each wave
+    private float waveTimer = 0f; // Timer to keep track of the wave time
+
     [Header("Spawn Positions")]
     public List<Transform> spawnPositions; // List of spawn positions
 
@@ -47,16 +51,21 @@ public class EnemySpawner : MonoBehaviour
     {
         player = GameObject.FindObjectOfType<PlayerStats>().transform;
         CalculateWaveQuota();
+        waveTimer = 0f;
+
     }
 
     void Update()
     {
-
+        waveTimer += Time.deltaTime;
         // Check if the current wave has ended and start the next wave
-        if (currentWaveCount < waves.Count && enemiesAlive == 0 && waves[currentWaveCount].allSpawnedEnemiesCount >= waves[currentWaveCount].waveQuota && !isWaveActive)
+        if ((currentWaveCount < waves.Count && enemiesAlive == 0 && waves[currentWaveCount].allSpawnedEnemiesCount >= waves[currentWaveCount].waveQuota && !isWaveActive)
+            || (waveTimer >= waveTimeLimit))
         {
             Debug.Log("Starting next wave...");
-
+            maxEnemiesAllowed += 5; // Increase the maximum number of enemies allowed for the next wave
+            waveTimer = 0f; // Reset the wave timer
+            waveTimeLimit += 10f; // Increase the time limit for the next wave
             StartCoroutine(StartNextWave());
         }
 
