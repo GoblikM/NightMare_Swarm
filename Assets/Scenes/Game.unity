@@ -1711,7 +1711,7 @@ MonoBehaviour:
       spawnedCount: 0
       enemyPrefab: {fileID: 8972377595951973060, guid: e38d8b180349d8c4e83c8c977b0faab4, type: 3}
     waveQuota: 0
-    spawnInterval: 1.2
+    spawnInterval: 0.2
     allSpawnedEnemiesCount: 0
   - name: Wave 7
     enemyGroups:
@@ -1720,7 +1720,7 @@ MonoBehaviour:
       spawnedCount: 0
       enemyPrefab: {fileID: 8972377595951973060, guid: 3f36ee5739bf9534eb621bdefddd7775, type: 3}
     waveQuota: 0
-    spawnInterval: 1.2
+    spawnInterval: 0.1
     allSpawnedEnemiesCount: 0
   - name: Wave 8
     enemyGroups:
@@ -1729,7 +1729,20 @@ MonoBehaviour:
       spawnedCount: 0
       enemyPrefab: {fileID: 721273822577818060, guid: e5aab28f8a9731c4a8593940ff6d2fa8, type: 3}
     waveQuota: 0
-    spawnInterval: 1.2
+    spawnInterval: 0.1
+    allSpawnedEnemiesCount: 0
+  - name: Wave 9
+    enemyGroups:
+    - enemyName: Skeleton
+      enemyCount: 20
+      spawnedCount: 0
+      enemyPrefab: {fileID: 5898094566929483402, guid: b7b3b7159fe7f124c875489d89a5a40d, type: 3}
+    - enemyName: Red bat
+      enemyCount: 40
+      spawnedCount: 0
+      enemyPrefab: {fileID: 8972377595951973060, guid: e38d8b180349d8c4e83c8c977b0faab4, type: 3}
+    waveQuota: 0
+    spawnInterval: 0.1
     allSpawnedEnemiesCount: 0
   currentWaveCount: 0
   enemiesAlive: 0
@@ -1737,6 +1750,7 @@ MonoBehaviour:
   maxEnemiesReached: 0
   waveInterval: 5
   totalEnemiesKilled: 0
+  waveTimeLimit: 40
   spawnPositions:
   - {fileID: 449318086}
   - {fileID: 1455105977}

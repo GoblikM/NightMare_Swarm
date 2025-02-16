@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
     public int totalEnemiesKilled = 0;
 
     [Header("Wave Timer")]
-    public float waveTimeLimit = 60f; // Time limit for each wave
+    public float waveTimeLimit = 40f; // Time limit for each wave
     private float waveTimer = 0f; // Timer to keep track of the wave time
 
     [Header("Spawn Positions")]
@@ -65,7 +65,6 @@ public class EnemySpawner : MonoBehaviour
             Debug.Log("Starting next wave...");
             maxEnemiesAllowed += 5; // Increase the maximum number of enemies allowed for the next wave
             waveTimer = 0f; // Reset the wave timer
-            waveTimeLimit += 10f; // Increase the time limit for the next wave
             StartCoroutine(StartNextWave());
         }
 
