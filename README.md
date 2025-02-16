@@ -5,7 +5,6 @@ A Unity game project for the AP9VH course, inspired by Vampire Survivors. Develo
 Below is a list of assets used in the game, categorized by their purpose.
 
 ### **Character Sprites**
-- [Character Base by Seliel the Shaper](https://seliel-the-shaper.itch.io/character-base)
 - [Free Wizard Sprite Sheets by Free Game Assets](https://free-game-assets.itch.io/free-wizard-sprite-sheets-pixel-art)
 - [Free Ninja Sprite Sheets by CraftPix](https://craftpix.net/freebies/free-ninja-sprite-sheets-pixel-art/)
 
