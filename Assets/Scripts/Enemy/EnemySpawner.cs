@@ -63,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
             || (waveTimer >= waveTimeLimit))
         {
             Debug.Log("Starting next wave...");
-            maxEnemiesAllowed += 5; // Increase the maximum number of enemies allowed for the next wave
+            //maxEnemiesAllowed += 5; // Increase the maximum number of enemies allowed for the next wave
             waveTimer = 0f; // Reset the wave timer
             StartCoroutine(StartNextWave());
         }

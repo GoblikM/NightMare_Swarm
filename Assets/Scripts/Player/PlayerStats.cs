@@ -349,8 +349,8 @@ public class PlayerStats : MonoBehaviour
     {
         if(CurrentHealth < characterData.MaxHealth)
         {
-            CurrentHealth += CurrentRecovery * Time.deltaTime;
-            if(CurrentHealth > characterData.MaxHealth)
+            CurrentHealth += CurrentRecovery * Time.deltaTime; // Recover health over time based on the recovery stat of the player
+            if (CurrentHealth > characterData.MaxHealth)
             {
                 CurrentHealth = characterData.MaxHealth;
             }
