@@ -39,3 +39,6 @@ Below is a list of assets used in the game, categorized by their purpose.
 - [PNGEgg (Various PNG Assets)](https://www.pngegg.com/en/png-pfbkm)
 - [Krea AI - AI-Generated Assets](https://www.krea.ai/)
 
+### **YouTube Tutorials & Learning Resources**
+[Terresquall - YouTube Channel](https://www.youtube.com/@terresquall) - I used tutorials from the Terresquall YouTube Channel as a foundation for the game's structure and core mechanics.
+
