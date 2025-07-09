@@ -108,6 +108,14 @@ public class InventoryManager : MonoBehaviour
             nextLevelWeapon.transform.SetParent(transform);
             // Add the weapon to the inventory
             AddWeapon(slotIndex, nextLevelWeapon.GetComponent<WeaponController>());
+            
+            // Remove the old weapon from tracking and add the new one
+            if (LevelWrapper.instance != null)
+            {
+                LevelWrapper.instance.RemoveTransferredController(weapon.gameObject);
+                LevelWrapper.instance.AddTransferredController(nextLevelWeapon);
+            }
+            
             // Destroy the current weapon
             Destroy(weapon.gameObject);
             // Update the level of the weapon
@@ -139,6 +147,14 @@ public class InventoryManager : MonoBehaviour
             nextLevelPassiveItem.transform.SetParent(transform);
             // Add the passive item to the inventory
             AddPassiveItem(slotIndex, nextLevelPassiveItem.GetComponent<PassiveItem>());
+            
+            // Remove the old passive item from tracking and add the new one
+            if (LevelWrapper.instance != null)
+            {
+                LevelWrapper.instance.RemoveTransferredController(passiveitem.gameObject);
+                LevelWrapper.instance.AddTransferredController(nextLevelPassiveItem);
+            }
+            
             // Destroy the current passive item
             Destroy(passiveitem.gameObject);
             // Update the level of the passive item

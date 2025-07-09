@@ -16,6 +16,12 @@ public class SceneController : MonoBehaviour
 
     public void SceneChange(string sceneName)
     {
+        // Clean up controllers before changing scenes
+        if (LevelWrapper.instance != null)
+        {
+            LevelWrapper.instance.ExitLevel();
+        }
+        
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1; // Reset the time scale
         MusicManager.instance.PlayMusic(music, 0.3f);

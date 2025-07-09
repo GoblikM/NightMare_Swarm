@@ -388,6 +388,12 @@ public class PlayerStats : MonoBehaviour
         inventory.AddWeapon(weaponSlotIndex, spawnedWeapon.GetComponent<WeaponController>());
         // increase the weapon slot index
         weaponSlotIndex++;
+        
+        // Track the spawned weapon in the LevelWrapper if it exists
+        if (LevelWrapper.instance != null)
+        {
+            LevelWrapper.instance.AddTransferredController(spawnedWeapon);
+        }
     }
 
 
@@ -403,5 +409,11 @@ public class PlayerStats : MonoBehaviour
         spawnedPassiveItem.transform.SetParent(transform);
         inventory.AddPassiveItem(passiveItemSlotIndex, spawnedPassiveItem.GetComponent<PassiveItem>());
         passiveItemSlotIndex++;
+        
+        // Track the spawned passive item in the LevelWrapper if it exists
+        if (LevelWrapper.instance != null)
+        {
+            LevelWrapper.instance.AddTransferredController(spawnedPassiveItem);
+        }
     }
 }
