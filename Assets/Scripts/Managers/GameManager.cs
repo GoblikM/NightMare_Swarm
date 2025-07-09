@@ -190,6 +190,13 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         timeSurvivedDisplay.text = stopWatchDisplay.text;
+        
+        // Clean up controllers when game ends
+        if (LevelWrapper.instance != null)
+        {
+            LevelWrapper.instance.ExitLevel();
+        }
+        
         ChangeState(GameState.GameOver);
     }
 
@@ -328,11 +335,11 @@ public class GameManager : MonoBehaviour
             yield return wait;
             t += Time.deltaTime;
 
-            // Ovìø, zda textObject nebyl znièen
+            // Ovï¿½ï¿½, zda textObject nebyl zniï¿½en
             if (rect == null)
-                yield break; // Ukonèí coroutine, pokud je objekt znièen
+                yield break; // Ukonï¿½ï¿½ coroutine, pokud je objekt zniï¿½en
 
-            // Zmìna barvy textu
+            // Zmï¿½na barvy textu
             textComponent.color = new Color(textComponent.color.r, textComponent.color.g, textComponent.color.b, 1 - t / duration);
 
             // Kontrola existence targetu
@@ -343,7 +350,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // Na konci zniè textObject (pokud už nebyl znièen)
+        // Na konci zniï¿½ textObject (pokud uï¿½ nebyl zniï¿½en)
         if (textObject != null)
             Destroy(textObject);
     }
